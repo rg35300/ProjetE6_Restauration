@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Graphiques</title>
+</head>
+<body>
+    <h1>Page des graphiques</h1>
+    <a href="/Home" class="card-link">Home</a>
+    <a href="/Graphique" class="card-link">Graphiques</a>
+    <form method="POST" action="/Logout">
+        <button type="submit">Se déconnecter</button>
+    </form>
+
+    <canvas id="GraphPoid"></canvas>
+    <script>
+        const labels=[];
+        const dataPoid=[0,1,2,3,4,5,6,7,8,9,10,77,15,987,2,54,156,984,78];
+
+        const GraphPoid = new Chart(document.getElementById('GraphPoid'), {
+            type: 'line',
+            data: { labels, datasets: [{ label: 'Déchet(Kg)', data: dataPoid, borderColor: 'green', fill: true }] },
+            options: { responsive: true, animation: false, scales:{y: { min: 0 , max: 200} }}
+        });
+        function update() {
+        const date = new Date().toLocaleTimeString();
+        const valeur = Math.floor(Math.random() * 100);
+
+        labels.push(date);
+        dataPoid.push(valeur);
+
+        if (labels.length > 10) {
+            labels.shift();
+            dataPoid.shift();
+        }
+
+        GraphPoid.update();
+    }
+    setInterval(update, 1000);
+    </script>
+</body>
+</html>
