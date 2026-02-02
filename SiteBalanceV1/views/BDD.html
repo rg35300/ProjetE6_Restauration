@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDD</title>
+</head>
+<body>
+    <h1>BDD</h1>
+    <a href="/Home" class="card-link">Home</a>
+    <a href="/Graphique" class="card-link">Graphiques</a>
+    <a href="/Dechet" class="card-link">Ajout de déchet</a>
+
+        <br>
+
+    <form method="POST" action="/ReadDataBase">
+    <label for="nomTable">BaseDeDonne:</label>
+    <select name="nomTable" id="nomTable">
+        <option value='Utilisateur'>Utilisateur</option>
+        <option value='DonneeCollecte'>Donnée Collectés</option>
+        <option value='Balance'>Balance</option>
+    </select>
+
+    <button type="submit">Submit</button>
+    </form>
+
+    <form method="POST" action="/AddUtilisateur">
+        <textarea name='Nom' rows="1" cols="20" placeholder="Nom"></textarea><br>
+        <textarea name='Prenom' rows="1" cols="20" placeholder="Prénom"></textarea><br>
+        <textarea name='Email' rows="1" cols="20" placeholder="Mail"></textarea><br>
+        <textarea name='MotDePasse' rows="1" cols="20" placeholder="MDP"></textarea><br>
+        <select id="Role" name="Role" required>
+            <option value="webadmin">SuperAdmin</option>
+            <option value="AdminBDD">Admin Base de Données</option>
+            <option value="ResponsableSelf">Responsable du self</option>
+            <option value="AgentRestauration">Agent de restauration</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+        
+    <form method="POST" action="/Logout">
+        <button type="submit">Se déconnecter</button>
+    </form>
+
+</body>
+</html>

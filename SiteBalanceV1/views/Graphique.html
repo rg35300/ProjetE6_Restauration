@@ -9,36 +9,74 @@
 <body>
     <h1>Page des graphiques</h1>
     <a href="/Home" class="card-link">Home</a>
-    <a href="/Graphique" class="card-link">Graphiques</a>
+    <a href="/BDD" class="card-link">BDD</a>
+    <a href="/Dechet" class="card-link">Ajout de déchet</a>
+</br>
+
+     <select id="ChoixGraphique" name="ChoixGraphique" required>
+            <option value="Plastique">Plastique</option>
+            <option value="Organique">Organique</option>
+    </select>
+
+
+    <form method="POST" action="Semaine">
+        Choix de la semaine
+        <input id="Semaine" type="date" name="date"><br>
+    </form>
+
     <form method="POST" action="/Logout">
         <button type="submit">Se déconnecter</button>
     </form>
 
     <canvas id="GraphPoid"></canvas>
-    <script>
-        const labels=[];
-        const dataPoid=[0,1,2,3,4,5,6,7,8,9,10,77,15,987,2,54,156,984,78];
+    
 
-        const GraphPoid = new Chart(document.getElementById('GraphPoid'), {
-            type: 'line',
-            data: { labels, datasets: [{ label: 'Déchet(Kg)', data: dataPoid, borderColor: 'green', fill: true }] },
-            options: { responsive: true, animation: false, scales:{y: { min: 0 , max: 200} }}
-        });
-        function update() {
-        const date = new Date().toLocaleTimeString();
-        const valeur = Math.floor(Math.random() * 100);
+<script>
+let chart;
 
-        labels.push(date);
-        dataPoid.push(valeur);
+async function loadGraphData(type,date) {
+    const response = await fetch(`/API/Data_BDD?type=${type}&date=${date}`);
+    const data = await response.json();
 
-        if (labels.length > 10) {
-            labels.shift();
-            dataPoid.shift();
+    const labels = data.map(row =>
+        new Date(row.DateDeCollecte).toLocaleString()
+    );
+
+    const dataPoid = data.map(row => row.Valeur);
+
+    if(chart)chart.destroy();
+
+    chart = new Chart(document.getElementById('GraphPoid'), {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: `Déchets ${type} (Kg)`,
+                data: dataPoid,
+                borderColor: 'blue',
+                backgroundColor: 'rgba(0,128,0,0.2)',
+                fill: true,
+            }]
         }
+    });
+}
 
-        GraphPoid.update();
-    }
-    setInterval(update, 1000);
-    </script>
+document.getElementById('ChoixGraphique').addEventListener('change', () => {
+    const type = document.getElementById('ChoixGraphique').value;
+    const date = document.getElementById('Semaine').value;
+    loadGraphData(type,date);
+});
+
+document.getElementById('Semaine').addEventListener('change', () => {
+    const type = document.getElementById('ChoixGraphique').value;
+    const date = document.getElementById('Semaine').value;
+    loadGraphData(type, date);
+});
+
+const DateChoisi=new Date().toISOString().split('T')[0];
+loadGraphData('Plastique',DateChoisi);
+
+</script>
+
 </body>
 </html>
