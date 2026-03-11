@@ -2,17 +2,236 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Graphiques</title>
+    <title>Menu de la semaine</title>
 </head>
+
 <body>
-    <h1>Page des graphiques</h1>
-    <a href="/Home" class="card-link">Home</a>
-    <a href="/BDD" class="card-link">BDD</a>
-    <a href="/Dechet" class="card-link">Ajout de déchet</a>
-    <a href="/Graphique" class="card-link">Affichage Graphique</a>
-</br>
+
+<h1>Menu de la semaine</h1>
+
+<a href="/Home">Home</a>
+<a href="/BDD">BDD</a>
+<a href="/Dechet">Ajout de déchet</a>
+<a href="/Graphique">Graphique</a>
+
+<br><br>
+
+<form id="Menu">
+
+<table border="1">
+<thead>
+<tr>
+    <th>Menu / Jour</th>
+    <th>Lundi</th>
+    <th>Mardi</th>
+    <th>Jeudi</th>
+    <th>Vendredi</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Entrée</td>
+
+<td>
+<input type="text" id="EntreeLundi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Lundi')" required>
+<br>
+<input type="number" id="EntreeOrganiqueLundi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="EntreeMardi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Mardi')" required>
+<br>
+<input type="number" id="EntreeOrganiqueMardi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="EntreeJeudi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Jeudi')" required>
+<br>
+<input type="number" id="EntreeOrganiqueJeudi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="EntreeVendredi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Vendredi')" required>
+<br>
+<input type="number" id="EntreeOrganiqueVendredi" value="0" min="0" step="0.1">
+</td>
+</tr>
+
+<tr>
+<td>Plat</td>
+
+<td>
+<input type="text" id="PlatLundi" list="plats-suggestions" onchange="autoFillPoids('Plat','Lundi')" required>
+<br>
+<input type="number" id="PlatOrganiqueLundi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="PlatMardi" list="plats-suggestions" onchange="autoFillPoids('Plat','Mardi')" required>
+<br>
+<input type="number" id="PlatOrganiqueMardi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="PlatJeudi" list="plats-suggestions" onchange="autoFillPoids('Plat','Jeudi')" required>
+<br>
+<input type="number" id="PlatOrganiqueJeudi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="PlatVendredi" list="plats-suggestions" onchange="autoFillPoids('Plat','Vendredi')" required>
+<br>
+<input type="number" id="PlatOrganiqueVendredi" value="0" min="0" step="0.1">
+</td>
+</tr>
+
+<tr>
+<td>Dessert</td>
+
+<td>
+<input type="text" id="DessertLundi" list="desserts-suggestions" onchange="autoFillPoids('Dessert','Lundi')" required>
+<br>
+<input type="number" id="DessertOrganiqueLundi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="DessertMardi" list="desserts-suggestions" onchange="autoFillPoids('Dessert','Mardi')" required>
+<br>
+<input type="number" id="DessertOrganiqueMardi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="DessertJeudi" list="desserts-suggestions" onchange="autoFillPoids('Dessert','Jeudi')" required>
+<br>
+<input type="number" id="DessertOrganiqueJeudi" value="0" min="0" step="0.1">
+</td>
+
+<td>
+<input type="text" id="DessertVendredi" list="desserts-suggestions" onchange="autoFillPoids('Dessert','Vendredi')" required>
+<br>
+<input type="number" id="DessertOrganiqueVendredi" value="0" min="0" step="0.1">
+</td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+<button type="button" onclick="envoyerPlats()">Envoyer</button>
+
+</form>
+
+<datalist id="entrees-suggestions"></datalist>
+<datalist id="plats-suggestions"></datalist>
+<datalist id="desserts-suggestions"></datalist>
+
+<script>
+
+let menusData = {};
+
+async function loadSuggestions() {
+    try {
+        const response = await fetch('/GetMenu');
+        menusData = await response.json();
+
+        const addOptions = (id, items) => {
+            const datalist = document.getElementById(id);
+            datalist.innerHTML = "";
+
+            (items || []).forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.nom;
+                datalist.appendChild(option);
+            });
+        };
+
+        addOptions('entrees-suggestions', menusData.entrees);
+        addOptions('plats-suggestions', menusData.plats);
+        addOptions('desserts-suggestions', menusData.desserts);
+
+    } catch (err) {
+        console.error("Erreur chargement suggestions:", err);
+    }
+}
+
+window.addEventListener('DOMContentLoaded', loadSuggestions);
+
+function autoFillPoids(type, jour) {
+
+    const nomInput = document.getElementById(`${type}${jour}`).value;
+    const poidsInput = document.getElementById(`${type}Organique${jour}`);
+
+    const liste = menusData[type.toLowerCase() + "s"];
+    if (!liste) return;
+
+    const element = liste.find(item => item.nom === nomInput);
+
+    if (element) {
+        poidsInput.value = element.masse;
+    }
+}
+
+async function envoyerPlats() {
+
+    const jours = ['Lundi','Mardi','Jeudi','Vendredi'];
+
+    const data = {
+        entrees: [],
+        plats: [],
+        desserts: []
+    };
+
+    jours.forEach(jour => {
+
+        const entree = document.getElementById(`Entree${jour}`).value;
+        const plat = document.getElementById(`Plat${jour}`).value;
+        const dessert = document.getElementById(`Dessert${jour}`).value;
+
+        if (entree) {
+            data.entrees.push({
+                nom: entree,
+                organique: document.getElementById(`EntreeOrganique${jour}`).value
+            });
+        }
+
+        if (plat) {
+            data.plats.push({
+                nom: plat,
+                organique: document.getElementById(`PlatOrganique${jour}`).value
+            });
+        }
+
+        if (dessert) {
+            data.desserts.push({
+                nom: dessert,
+                organique: document.getElementById(`DessertOrganique${jour}`).value
+            });
+        }
+    });
+
+    try {
+        const response = await fetch('/AjoutMenu', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert("Menu enregistrer");
+            window.location.reload();
+        } else {
+            alert("Erreur lors de l'envoi");
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Erreur serveur");
+    }
+}
+
+</script>
 
 </body>
 </html>

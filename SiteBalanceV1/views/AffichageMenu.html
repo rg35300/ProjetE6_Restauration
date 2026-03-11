@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Affichage Menu</title>
+</head>
+<body>
+
+<h1>Affichage Menu</h1>
+<a href="/">Login</a>
+<br><br>
+
+<table border="1">
+<thead>
+<tr>
+    <th>Menu / Jour</th>
+    <th>Lundi</th>
+    <th>Mardi</th>
+    <th>Jeudi</th>
+    <th>Vendredi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Entrée</td>
+    <td><span id="EntreeLundi"></span></td>
+    <td><span id="EntreeMardi"></span></td>
+    <td><span id="EntreeJeudi"></span></td>
+    <td><span id="EntreeVendredi"></span></td>
+</tr>
+<tr>
+    <td>Plat</td>
+    <td><span id="PlatLundi"></span></td>
+    <td><span id="PlatMardi"></span></td>
+    <td><span id="PlatJeudi"></span></td>
+    <td><span id="PlatVendredi"></span></td>
+</tr>
+<tr>
+    <td>Dessert</td>
+    <td><span id="DessertLundi"></span></td>
+    <td><span id="DessertMardi"></span></td>
+    <td><span id="DessertJeudi"></span></td>
+    <td><span id="DessertVendredi"></span></td>
+</tr>
+</tbody>
+</table>
+
+<script>
+async function AffichageMenu() {
+    try {
+        const response = await fetch('/AffichageMenu');
+        const data = await response.json();
+
+        const jours = ['lundi','mardi','jeudi','vendredi'];
+
+        jours.forEach(jour => {
+            const menuJour = data[jour];
+            if (!menuJour) return;
+
+            if (menuJour.entree) {
+                document.getElementById(`Entree${jour}`).textContent =
+                    `${menuJour.entree.nom} (${menuJour.entree.masse} kg)`;
+            }
+
+            if (menuJour.plat) {
+                document.getElementById(`Plat${jour}`).textContent =
+                    `${menuJour.plat.nom} (${menuJour.plat.masse} kg)`;
+            }
+
+            if (menuJour.dessert) {
+                document.getElementById(`Dessert${jour}`).textContent =
+                    `${menuJour.dessert.nom} (${menuJour.dessert.masse} kg)`;
+            }
+        });
+
+    } catch (err) {
+        console.error("Erreur chargement affichage :", err);
+    }
+}
+
+window.addEventListener('DOMContentLoaded', AffichageMenu);
+</script>
+
+</body>
+</html>

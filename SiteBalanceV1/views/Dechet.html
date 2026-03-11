@@ -10,6 +10,7 @@
     <a href="/Home" class="card-link">Home</a>
     <a href="/Graphique" class="card-link">Graphiques</a>
     <a href="/BDD" class="card-link">BDD</a>
+    <a href="/Menu" class="card-link">Menu</a>
     <br><br>
 
     <form id="formDechet">
@@ -20,8 +21,15 @@
         <select id="choice" name="choice" required>
             <option value="Plastique">Plastique</option>
             <option value="Organique">Organique</option>
-        </select><br><br>
+        </select>
+        <br><br>
+        <div class="balance">
+            <input type="radio" id="balance1" name="balance" value="1" checked>
+            <label for="balance1">Balance 1</label>
 
+            <input type="radio" id="balance2" name="balance" value="2">
+            <label for="balance2">Balance 2</label>
+        </div>
         <button type="submit">Ajouter</button>
     </form>
 
@@ -35,15 +43,16 @@ document.getElementById('formDechet').addEventListener('submit', async (e) => {
 
     const weight = document.getElementById('weight').value;
     const choice = document.getElementById('choice').value;
+    const balance = document.querySelector('input[name="balance"]:checked').value;
 
     const response = await fetch('/AddDataDonneeCollecte', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ weight, choice })
+        body: new URLSearchParams({ weight, choice,balance })
     });
 
     if (response.ok) {
-        alert('Déchet ajouté !');
+        alert(`${weight}kg de déchet ${choice} de la balance n°${balance} ajouté !`);
         document.getElementById('weight').value = 0;
     } else {
         alert('Erreur lors de l’ajout.');

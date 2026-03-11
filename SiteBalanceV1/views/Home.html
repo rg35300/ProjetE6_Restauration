@@ -6,15 +6,20 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Logged</h1>
+    <h1>Bienvenue</h1>
     <a href="/Graphique" class="card-link">Graphiques</a>
     <a href="/BDD" class="card-link">BDD</a>
     <a href="/Dechet" class="card-link">Ajout de déchet</a>
+    <a href="/Menu" class="card-link">Menu</a>
 
         <br>
         
     <form method="POST" action="/Logout">
         <button type="submit">Se déconnecter</button>
+    </form>
+
+    <form action="/KillServer" method="POST">
+        <button type="submit">Kill Port 3000</button>
     </form>
 
 </body>

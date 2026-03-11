@@ -11,6 +11,8 @@
     <a href="/Home" class="card-link">Home</a>
     <a href="/BDD" class="card-link">BDD</a>
     <a href="/Dechet" class="card-link">Ajout de déchet</a>
+    <a href="/Menu" class="card-link">Menu</a>
+    
 </br>
 
      <select id="ChoixGraphique" name="ChoixGraphique" required>
@@ -19,9 +21,10 @@
     </select>
 
 
-    <form method="POST" action="Semaine">
-        Choix de la semaine
-        <input id="Semaine" type="date" name="date"><br>
+    <form id="Periode" method="POST" action="Periode">
+        Choix de la semaine<br>
+        <input id="date_debut" type="date" name="date_debut"><br>
+        <input id="date_fin" type="date" name="date_fin"><br>
     </form>
 
     <form method="POST" action="/Logout">
@@ -34,8 +37,8 @@
 <script>
 let chart;
 
-async function loadGraphData(type,date) {
-    const response = await fetch(`/API/Data_BDD?type=${type}&date=${date}`);
+async function loadGraphData(type,date_debut,date_fin) {
+    const response = await fetch(`/API/Data_BDD?type=${type}&date_debut=${date_debut}&date_fin=${date_fin}`);
     const data = await response.json();
 
     const labels = data.map(row =>
@@ -56,6 +59,7 @@ async function loadGraphData(type,date) {
                 borderColor: 'blue',
                 backgroundColor: 'rgba(0,128,0,0.2)',
                 fill: true,
+                tension: 0.4,
             }]
         }
     });
@@ -63,18 +67,20 @@ async function loadGraphData(type,date) {
 
 document.getElementById('ChoixGraphique').addEventListener('change', () => {
     const type = document.getElementById('ChoixGraphique').value;
-    const date = document.getElementById('Semaine').value;
-    loadGraphData(type,date);
+    const date_debut = document.getElementById('date_debut').value;
+    const date_fin=document.getElementById('date_fin').value;
+    loadGraphData(type,date_debut,date_fin);
 });
 
-document.getElementById('Semaine').addEventListener('change', () => {
+document.getElementById('Periode').addEventListener('change', () => {
     const type = document.getElementById('ChoixGraphique').value;
-    const date = document.getElementById('Semaine').value;
-    loadGraphData(type, date);
+    const date_debut = document.getElementById('date_debut').value;
+    const date_fin=document.getElementById('date_fin').value;
+    loadGraphData(type,date_debut,date_fin);
 });
 
 const DateChoisi=new Date().toISOString().split('T')[0];
-loadGraphData('Plastique',DateChoisi);
+loadGraphData('Plastique',DateChoisi,DateChoisi);
 
 </script>
 
