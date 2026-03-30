@@ -1,11 +1,11 @@
 {
   "name": "sitebalancev1",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "js/serverV2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node js/serverV2.js",
+    "dev": "nodemon js/serverV2.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,9 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
     "express-session": "^1.18.2",
+    "json2csv": "^6.0.0-alpha.2",
     "mariadb": "^3.4.5",
     "mysql2": "^3.16.1"
   },

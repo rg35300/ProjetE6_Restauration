@@ -30,9 +30,9 @@
     <form method="POST" action="/Logout">
         <button type="submit">Se déconnecter</button>
     </form>
-
-    <canvas id="GraphPoid"></canvas>
-    
+    <div style="width: 80%; height: 50%; margin: auto;">
+        <canvas id="GraphPoid"></canvas>
+    </div>
 
 <script>
 let chart;
@@ -60,9 +60,29 @@ async function loadGraphData(type,date_debut,date_fin) {
                 backgroundColor: 'rgba(0,128,0,0.2)',
                 fill: true,
                 tension: 0.4,
+                segment: {
+                    borderColor: ctx => {
+                    const y = ctx.p0.parsed.y;
+                        return y > 15 ? 'red' : 'blue';
+                    },
+                    backgroundColor : ctx => {
+                    const y = ctx.p0.parsed.y;
+                        return y > 15 ? 'rgba(255,0,0,0.2)' : 'rgba(0,0,255,0.2)';
+                    }
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                }
             }]
         }
+        
     });
+    if (dataPoid.some(val => val > 15)) {
+        window.alert("Un menu a trop de déchet");
+    }
+
+    
 }
 
 document.getElementById('ChoixGraphique').addEventListener('change', () => {
@@ -81,6 +101,8 @@ document.getElementById('Periode').addEventListener('change', () => {
 
 const DateChoisi=new Date().toISOString().split('T')[0];
 loadGraphData('Plastique',DateChoisi,DateChoisi);
+
+
 
 </script>
 

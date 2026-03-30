@@ -30,32 +30,32 @@
 </thead>
 
 <tbody>
-
+    <input type="number" id="NbrMenu" name="NbrMenu" value="0" min="0" max="1000" step="10"><br>
 <tr>
 <td>Entrée</td>
 
 <td>
 <input type="text" id="EntreeLundi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Lundi')" required>
 <br>
-<input type="number" id="EntreeOrganiqueLundi" value="0" min="0" step="0.1">
+<input type="number" id="EntreeOrganiqueLundi" value="0" min="0" step="5">
 </td>
 
 <td>
 <input type="text" id="EntreeMardi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Mardi')" required>
 <br>
-<input type="number" id="EntreeOrganiqueMardi" value="0" min="0" step="0.1">
+<input type="number" id="EntreeOrganiqueMardi" value="0" min="0" step="5">
 </td>
 
 <td>
 <input type="text" id="EntreeJeudi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Jeudi')" required>
 <br>
-<input type="number" id="EntreeOrganiqueJeudi" value="0" min="0" step="0.1">
+<input type="number" id="EntreeOrganiqueJeudi" value="0" min="0" step="5">
 </td>
 
 <td>
 <input type="text" id="EntreeVendredi" list="entrees-suggestions" onchange="autoFillPoids('Entree','Vendredi')" required>
 <br>
-<input type="number" id="EntreeOrganiqueVendredi" value="0" min="0" step="0.1">
+<input type="number" id="EntreeOrganiqueVendredi" value="0" min="0" step="5">
 </td>
 </tr>
 
@@ -65,25 +65,25 @@
 <td>
 <input type="text" id="PlatLundi" list="plats-suggestions" onchange="autoFillPoids('Plat','Lundi')" required>
 <br>
-<input type="number" id="PlatOrganiqueLundi" value="0" min="0" step="0.1">
+<input type="number" id="PlatOrganiqueLundi" value="0" min="0" step="5">
 </td>
 
 <td>
 <input type="text" id="PlatMardi" list="plats-suggestions" onchange="autoFillPoids('Plat','Mardi')" required>
 <br>
-<input type="number" id="PlatOrganiqueMardi" value="0" min="0" step="0.1">
+<input type="number" id="PlatOrganiqueMardi" value="0" min="0" step="5">
 </td>
 
 <td>
 <input type="text" id="PlatJeudi" list="plats-suggestions" onchange="autoFillPoids('Plat','Jeudi')" required>
 <br>
-<input type="number" id="PlatOrganiqueJeudi" value="0" min="0" step="0.1">
+<input type="number" id="PlatOrganiqueJeudi" value="0" min="0" step="5">
 </td>
 
 <td>
 <input type="text" id="PlatVendredi" list="plats-suggestions" onchange="autoFillPoids('Plat','Vendredi')" required>
 <br>
-<input type="number" id="PlatOrganiqueVendredi" value="0" min="0" step="0.1">
+<input type="number" id="PlatOrganiqueVendredi" value="0" min="0" step="5">
 </td>
 </tr>
 
@@ -123,12 +123,16 @@
 
 </form>
 
+<p id="resultatentre"></p>
+<p id="resultatplat"></p>
+<p id="resultdessert"></p>
+<p id="resultat"></p>
+
 <datalist id="entrees-suggestions"></datalist>
 <datalist id="plats-suggestions"></datalist>
 <datalist id="desserts-suggestions"></datalist>
 
 <script>
-
 let menusData = {};
 
 async function loadSuggestions() {
@@ -139,11 +143,14 @@ async function loadSuggestions() {
         const addOptions = (id, items) => {
             const datalist = document.getElementById(id);
             datalist.innerHTML = "";
-
+            const nomsVus = new Set();
             (items || []).forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.nom;
-                datalist.appendChild(option);
+                if (!nomsVus.has(item.nom)) {
+                    nomsVus.add(item.nom);
+                    const option = document.createElement('option');
+                    option.value = item.nom;
+                    datalist.appendChild(option);
+                }
             });
         };
 
@@ -156,81 +163,57 @@ async function loadSuggestions() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', loadSuggestions);
+function calculTotalAuto() {
+    const nbrMenu = parseFloat(document.getElementById("NbrMenu").value) || 0;
+
+    const entrees = ["EntreeOrganiqueLundi","EntreeOrganiqueMardi","EntreeOrganiqueJeudi","EntreeOrganiqueVendredi"];
+    const plats = ["PlatOrganiqueLundi","PlatOrganiqueMardi","PlatOrganiqueJeudi","PlatOrganiqueVendredi"];
+    const desserts = ["DessertOrganiqueLundi","DessertOrganiqueMardi","DessertOrganiqueJeudi","DessertOrganiqueVendredi"];
+
+    let totalEntree = 0, totalPlat = 0, totalDessert = 0;
+
+    entrees.forEach(id => totalEntree += parseFloat(document.getElementById(id).value) || 0);
+    plats.forEach(id => totalPlat += parseFloat(document.getElementById(id).value) || 0);
+    desserts.forEach(id => totalDessert += parseFloat(document.getElementById(id).value) || 0);
+
+    const totalFinal = (totalEntree + totalPlat + totalDessert) * nbrMenu;
+
+    document.getElementById("resultatentre").innerText = `Total des déchets Entrées : ${(totalEntree * nbrMenu).toFixed(2)} g`;
+    document.getElementById("resultatplat").innerText = `Total des déchets Plats : ${(totalPlat * nbrMenu).toFixed(2)} g`;
+    document.getElementById("resultdessert").innerText = `Total des déchets Desserts : ${(totalDessert * nbrMenu).toFixed(2)} g`;
+    document.getElementById("resultat").innerText = `Total général des déchets : ${totalFinal.toFixed(2)} g`;
+}
 
 function autoFillPoids(type, jour) {
-
-    const nomInput = document.getElementById(`${type}${jour}`).value;
+    const nomInput = document.getElementById(`${type}${jour}`).value.trim();
     const poidsInput = document.getElementById(`${type}Organique${jour}`);
 
-    const liste = menusData[type.toLowerCase() + "s"];
-    if (!liste) return;
+    if (!menusData[type.toLowerCase() + "s"]) return;
 
-    const element = liste.find(item => item.nom === nomInput);
+    const elements = menusData[type.toLowerCase() + "s"].filter(item => item.nom === nomInput);
 
-    if (element) {
-        poidsInput.value = element.masse;
-    }
+    if (elements.length > 0) {
+        const moyenne = elements.reduce((acc, e) => acc + parseFloat(e.masse), 0) / elements.length;
+        poidsInput.value = moyenne.toFixed(2);
+    } 
+    calculTotalAuto();
 }
 
-async function envoyerPlats() {
+window.addEventListener('DOMContentLoaded', async () => {
+    await loadSuggestions();
 
-    const jours = ['Lundi','Mardi','Jeudi','Vendredi'];
+    const inputs = [
+        "NbrMenu",
+        "EntreeOrganiqueLundi","EntreeOrganiqueMardi","EntreeOrganiqueJeudi","EntreeOrganiqueVendredi",
+        "PlatOrganiqueLundi","PlatOrganiqueMardi","PlatOrganiqueJeudi","PlatOrganiqueVendredi",
+        "DessertOrganiqueLundi","DessertOrganiqueMardi","DessertOrganiqueJeudi","DessertOrganiqueVendredi"
+    ];
 
-    const data = {
-        entrees: [],
-        plats: [],
-        desserts: []
-    };
-
-    jours.forEach(jour => {
-
-        const entree = document.getElementById(`Entree${jour}`).value;
-        const plat = document.getElementById(`Plat${jour}`).value;
-        const dessert = document.getElementById(`Dessert${jour}`).value;
-
-        if (entree) {
-            data.entrees.push({
-                nom: entree,
-                organique: document.getElementById(`EntreeOrganique${jour}`).value
-            });
-        }
-
-        if (plat) {
-            data.plats.push({
-                nom: plat,
-                organique: document.getElementById(`PlatOrganique${jour}`).value
-            });
-        }
-
-        if (dessert) {
-            data.desserts.push({
-                nom: dessert,
-                organique: document.getElementById(`DessertOrganique${jour}`).value
-            });
-        }
+    inputs.forEach(id => {
+        const elt = document.getElementById(id);
+        if (elt) elt.addEventListener('input', calculTotalAuto);
     });
-
-    try {
-        const response = await fetch('/AjoutMenu', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            alert("Menu enregistrer");
-            window.location.reload();
-        } else {
-            alert("Erreur lors de l'envoi");
-        }
-
-    } catch (err) {
-        console.error(err);
-        alert("Erreur serveur");
-    }
-}
-
+});
 </script>
 
 </body>
