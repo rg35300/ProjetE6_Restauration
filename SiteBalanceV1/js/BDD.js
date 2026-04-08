@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const json2csv = require('json2csv');
+const logger = require('./logger.js');
 
 function isAuthenticated(req, res, next) {
     if (req.session.logged) {
@@ -14,9 +16,7 @@ function DroitAcces(rolesAutorises) {
         if (!req.session.user) {
             return res.redirect('/');
         }
-
         const userRole = req.session.user.role;
-
         if (rolesAutorises.includes(userRole)) {
             next();
         } else {
@@ -40,7 +40,8 @@ router.post('/AddDataDonneeCollecte', isAuthenticated, async (req, res)=>{
     console.log("Poid: ", weight);
     console.log("Type de déchet: ", choice);
     console.log("Balance n°", idBalance)
-    
+    logger.info("Insértion de donnée de masse dans la BDD");
+
     try{
         let connection;
         connection = await pool.getConnection();
@@ -95,6 +96,36 @@ router.post('/Semaine', isAuthenticated, async (req, res)=>{
     }
     catch(err){
         res.status(500).send("Erreur lors de la récup de la date");
+    }
+});
+
+router.get('/ExportCSV', isAuthenticated, async (req, res) => {
+    const pool = req.app.locals.pool;
+    let connection;
+    try {
+        connection = await pool.getConnection();
+        const rows = await connection.query(
+            `SELECT DateDeCollecte, Valeur, TypeDechet FROM DonneeCollecte`
+        );
+
+        let csv = 'DateDeCollecte;Valeur;TypeDechet\n';
+
+        rows.forEach(row => {
+            const date = row.DateDeCollecte ? row.DateDeCollecte.toISOString().split('T')[0] : '';
+            const valeur = row.Valeur ?? '';
+            const type = row.TypeDechet ? `"${row.TypeDechet.replace(/"/g, '""')}"` : '';
+            csv += `${date};${valeur};${type}\n`;
+        });
+
+        res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+        res.setHeader('Content-Disposition', 'attachment; filename="Historique_Pesé.csv"');
+        res.send(csv);
+
+    } catch (err) {
+        console.error("Erreur export CSV :", err);
+        res.status(500).json({ error: "Erreur serveur" });
+    } finally {
+        if (connection) connection.release();
     }
 });
 

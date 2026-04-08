@@ -42,7 +42,7 @@ async function loadGraphData(type,date_debut,date_fin) {
     const data = await response.json();
 
     const labels = data.map(row =>
-        new Date(row.DateDeCollecte).toLocaleString()
+        new Date(row.DateDeCollecte).toLocaleDateString()
     );
 
     const dataPoid = data.map(row => row.Valeur);
@@ -63,11 +63,11 @@ async function loadGraphData(type,date_debut,date_fin) {
                 segment: {
                     borderColor: ctx => {
                     const y = ctx.p0.parsed.y;
-                        return y > 15 ? 'red' : 'blue';
+                        return y > 90 ? 'red' : 'blue';
                     },
                     backgroundColor : ctx => {
                     const y = ctx.p0.parsed.y;
-                        return y > 15 ? 'rgba(255,0,0,0.2)' : 'rgba(0,0,255,0.2)';
+                        return y > 90 ? 'rgba(255,0,0,0.2)' : 'rgba(0,0,255,0.2)';
                     }
                 },
                 options: {
@@ -78,7 +78,7 @@ async function loadGraphData(type,date_debut,date_fin) {
         }
         
     });
-    if (dataPoid.some(val => val > 15)) {
+    if (dataPoid.some(val => val > 90)) {
         window.alert("Un menu a trop de déchet");
     }
 

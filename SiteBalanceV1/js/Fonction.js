@@ -1,8 +1,11 @@
 // js/bddFunctions.js
 const mariadb = require('mariadb');
 const bcrypt = require('bcrypt');
-const json2csv = require('json2csv');
 const fs = require('fs');
+const express = require('express');
+const router = express.Router();
+const logger = require('./logger.js');
+
 
 const pool = mariadb.createPool({
     host: 'localhost',
@@ -102,7 +105,6 @@ async function AddIpBan(IpBan,DateBan){
             `INSERT INTO IP_BAN (Adresse_IP,Date_Ban) VALUES (?,?)`,
             [IpBan,DateBan]
         );
-        console.log('Connexion Banni');
     } catch(err){
         console.error(`Echec du ban de ${IpBan}`);
     } finally{
@@ -123,9 +125,8 @@ async function CheckIpBan(ip) {
             return false;
         }
         const heure_ban = rows[0].Date_Ban;
-        console.log('Heure de ban:', heure_ban);
         const TempBanni = new Date() - new Date(heure_ban);
-        const Variable1Heure = 3600 * 1000;
+        const Variable1Heure =1000 * 3600;
 
         if (TempBanni > Variable1Heure) {
             await UnBanIp(ip);
@@ -160,6 +161,9 @@ async function UnBanIp(ip) {
     }
 }
 
+
+
+//Liste des fonctions importable dans d'autre fichier.
 module.exports = {
     ReadDataMariaDB,
     WriteDataDonneeCollecte,
@@ -170,12 +174,3 @@ module.exports = {
     UnBanIp,
     pool,
 };
-// async function ExportExcsel(date_debut,date_fin,type_dechet){
-//     let connection;
-//     try{
-//         connection = await pool.getConnection();
-//         `SELECT FROM DonneeCollecte WHERE `
-//     }
-// }
-
-//Liste des fonctions importable dans d'autre fichier.

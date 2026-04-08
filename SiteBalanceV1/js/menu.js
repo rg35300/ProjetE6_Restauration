@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const logger = require('./logger.js');
+
 
 function isAuthenticated(req, res, next) {
     if (req.session.logged) {
@@ -19,6 +21,7 @@ const pool = require('mariadb').createPool({
 
 async function AjoutDeMenu(type, nom, masse, jour) {
     let connection;
+    logger.info("Connexion à la BDD")
     try {
         connection = await pool.getConnection();
 
@@ -88,13 +91,12 @@ router.get('/GetMenu',isAuthenticated, async (req, res) => {
                 data.desserts.push(element);
             }
         });
-
         res.json(data);
 
     } catch (err) {
         console.error("Erreur récupération menu :", err);
         res.status(500).json({ error: "Erreur serveur" });
-
+        
     } finally {
         if (connection) connection.release();
     }
@@ -102,10 +104,8 @@ router.get('/GetMenu',isAuthenticated, async (req, res) => {
 
 router.get('/AffichageMenu', async (req, res) => {
     let connection;
-
     try {
         connection = await pool.getConnection();
-
         const rows = await connection.query(`
             SELECT 
                 NomPlat, 
@@ -115,17 +115,14 @@ router.get('/AffichageMenu', async (req, res) => {
             FROM menu
             GROUP BY NomPlat, TypePlat, Jour
         `);
-
         const data = {};
 
         rows.forEach(row => {
             if (!data[row.Jour]) data[row.Jour] = {};
-
             const element = { 
                 nom: row.NomPlat, 
                 masse: parseFloat(row.MasseMoyenne).toFixed(2)
             };
-
             if (row.TypePlat === 'entree') {
                 data[row.Jour].entree = element;
             } else if (row.TypePlat === 'plat') {
@@ -134,9 +131,7 @@ router.get('/AffichageMenu', async (req, res) => {
                 data[row.Jour].dessert = element;
             }
         });
-
         res.json(data);
-
     } catch (err) {
         console.error("Erreur récupération affichage :", err);
         res.status(500).json({ error: "Erreur serveur" });

@@ -14,7 +14,7 @@
     <br><br>
 
     <form id="formDechet">
-        <label for="weight">Poids (kg) :</label>
+        <label for="weight">Masse (kg) :</label>
         <input type="number" id="weight" name="weight" value="0" min="0" max="200" step="0.5"><br><br>
 
         <label for="choice">Type de déchet :</label>
@@ -36,10 +36,14 @@
     <form id="formLogout">
         <button type="submit">Se déconnecter</button>
     </form>
-    
-<button id="exportCsvBtn">Exporter les données en CSV</button>
+   
+    <button id="exportCsvBtn">Exporter en CSV</button>
 
 <script>
+document.getElementById("exportCsvBtn").addEventListener("click", () => {
+    window.location.href = '/ExportCSV';
+});
+
 document.getElementById('formDechet').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -65,6 +69,9 @@ document.getElementById('formLogout').addEventListener('submit', async (e) => {
     e.preventDefault();
     await fetch('/Logout', { method: 'POST' });
     window.location.href = '/';
+
+
+
 });
 </script>
 

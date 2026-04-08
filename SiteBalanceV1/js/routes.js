@@ -10,7 +10,6 @@ const BDDRoutes = require('./BDD');
 //Fonction vérifiant si l'utilisateur est bien log
 function isAuthenticated(req, res, next) {
     if (req.session.logged) {
-        console.log("Token Routage")
         next();
     } else {
         res.redirect('/');
@@ -41,7 +40,6 @@ function DroitAcces(rolesAutorises) {
 
 //Routage entre les pages de logins et la déconnection
 router.get('/', (req,res) =>{
-	console.log("Methode Get");
 	res.sendFile(join(__dirname, '../views','Login.html'));
 })
 
@@ -80,17 +78,12 @@ router.get('/Menu', isAuthenticated, DroitAcces(['webadmin','ResponsableSelf']),
     res.sendFile(join(__dirname, '../views', 'Menu.html'));
 });
 
-router.get('/Affichage', (req, res) => {
-    res.sendFile(join(__dirname, '../views', 'AffichageMenu.html'));
-});
-
-// Delegate to subrouters for functionality
 router.use(menuRoutes);
 router.use(loginRoutes);
 router.use(graphicRoutes);
 router.use(BDDRoutes);
 
-// 404 handler
+// 404
 router.use((req,res,next)=>{
     const error = new Error("Page non trouvée")
     error.status=404;

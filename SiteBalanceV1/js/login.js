@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const logger = require('./logger.js')
 
 router.post('/Login', async (req, res) => {
     const { login, pwd } = req.body;
@@ -17,29 +18,34 @@ router.post('/Login', async (req, res) => {
         );
 
         if (users.length === 0) {
-            return res.status(401).send("Identifiant ou mot de passe incorrect");
+            logger.warn(`Aucun compte lié à ${login}`);
+            return res.status(401).send("Email ou mot de passe incorrect"); // Stop l'exécution ici
         }
 
         const user = users[0];
 
-        bcrypt.compare(pwd,user.MotDePasse,(err,resultat)=>{
-            if(resultat){
-                req.session.logged = true;
-                req.session.user = {
-                    idUtilisateur: user.idUtilisateur,
-                    nom: user.Nom,
-                    prenom: user.Prenom,
-                    email: user.Email,
-                    role: user.Role
-                };
-            }
-            else{
-                return res.status(401).send("Identifiant ou mot de passe incorrect");
-            }
+        bcrypt.compare(pwd, user.MotDePasse, (err, resultat) => {
+        if (err) {
+            console.error("Erreur bcrypt :", err);
+            return res.status(500).send("Erreur serveur");
+        }
 
-            console.log("Connexion réussie :", req.session.user);
-            res.redirect('/Home');
-        });
+        if (resultat) {
+            req.session.logged = true;
+            req.session.user = {
+                idUtilisateur: user.idUtilisateur,
+                nom: user.Nom,
+                prenom: user.Prenom,
+                email: user.Email,
+                role: user.Role
+        };
+        logger.debug(`Connexion du compte ${user.Email}`)
+        return res.redirect('/Home');
+    } else {
+        logger.warn(`Mauvais mot de passe sur le compte ${user.Email}`);
+        return res.status(401).send("Email ou mot de passe incorrect");
+    }
+});
 
     } catch (err) {
         console.error("Erreur login :", err);

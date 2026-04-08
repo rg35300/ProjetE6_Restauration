@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const logger = require('./logger.js');
 
 function isAuthenticated(req, res, next) {
     if (req.session.logged) {
-        console.log("Token Graphique");
         next();
     } else {
         res.redirect('/');
@@ -26,7 +26,7 @@ router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
         let fin = date_fin && date_fin.trim() !== "" ? date_fin : null;
 
         let query = `
-            SELECT DateDeCollecte, Valeur
+            SELECT DATE(DateDeCollecte) as DateDeCollecte, SUM(Valeur) as Valeur
             FROM DonneeCollecte
         `;
 
@@ -59,6 +59,7 @@ router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
             query += ' WHERE ' + conditions.join(' AND ');
         }
 
+        query += ' GROUP BY DATE(DateDeCollecte)';
         query += ' ORDER BY DateDeCollecte ASC';
 
         const rows = await connection.query(query, params);
@@ -72,8 +73,10 @@ router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
     } catch (err) {
         console.error("Erreur API DonneeCollecte :", err);
         res.status(500).json({ error: 'Erreur BDD' });
+        logger.error('Erreur à la libération de la BDD')
     } finally {
         if (connection) connection.release();
+        logger.info('Libération de la connexion à la BDD');
     }
 });
 
