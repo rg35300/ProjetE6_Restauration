@@ -4,47 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BDD</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>BDD</h1>
-    <a href="/Home" class="card-link">Home</a>
-    <a href="/Graphique" class="card-link">Graphiques</a>
-    <a href="/Dechet" class="card-link">Ajout de déchet</a>
-    <a href="/Menu" class="card-link">Menu</a>
 
-        <br>
+<body class="bg-white text-black">
 
-    <form method="POST" action="/ReadDataBase">
-    <label for="nomTable">BaseDeDonne:</label>
-    <select name="nomTable" id="nomTable">
-        <option value='Utilisateur'>Utilisateur</option>
-        <option value='DonneeCollecte'>Donnée Collectés</option>
-        <option value='Balance'>Balance</option>
-        <option value='menu'>Menu</option>
-        <option value='IP_BAN'>Ban Liste</option>
-    </select>
+<div class="container py-4">
 
-    <button type="submit">Submit</button>
-    </form>
+    <div class="text-center mb-4">
+        <h1>BDD</h1>
 
-    <form method="POST" action="/AddUtilisateur">
-        <textarea name='Nom' rows="1" cols="20" placeholder="Nom"></textarea><br>
-        <textarea name='Prenom' rows="1" cols="20" placeholder="Prénom"></textarea><br>
-        <textarea name='Email' rows="1" cols="20" placeholder="Mail"></textarea><br>
-        <textarea name='MotDePasse' rows="1" cols="20" placeholder="MDP"></textarea><br>
-        <select id="Role" name="Role" required>
-            <option value="webadmin">SuperAdmin</option>
-            <option value="AdminBDD">Admin Base de Données</option>
-            <option value="ResponsableSelf">Responsable du self</option>
-            <option value="AgentRestauration">Agent de restauration</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
+        <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+            <a href="/Home" class="btn btn-outline-primary btn-sm">Home</a>
+            <a href="/Graphique" class="btn btn-outline-primary btn-sm">Graphiques</a>
+            <a href="/Dechet" class="btn btn-outline-primary btn-sm">Ajout de déchet</a>
+            <a href="/Menu" class="btn btn-outline-primary btn-sm">Menu</a>
+        </div>
+    </div>
 
-        
-    <form method="POST" action="/Logout">
-        <button type="submit">Se déconnecter</button>
-    </form>
+    <div class="row g-4 justify-content-center">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm p-3">
+                <h5 class="text-center mb-3">Lire une table</h5>
+                <form method="POST" action="/ReadDataBase">
+                    <div class="mb-3">
+                        <label class="form-label">Base de données</label>
+                        <select name="nomTable" id="nomTable" class="form-select">
+                            <option value="Utilisateur">Utilisateur</option>
+                            <option value="DonneeCollecte">Donnée Collectées</option>
+                            <option value="Balance">Balance</option>
+                            <option value="menu">Menu</option>
+                            <option value="IP_BAN">Ban Liste</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        Afficher
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm p-3">
+                <h5 class="text-center mb-3">Ajouter un utilisateur</h5>
+                <form method="POST" action="/AddUtilisateur">
+                    <div class="mb-2">
+                        <input class="form-control" name="Nom" placeholder="Nom" required>
+                    </div>
+                    <div class="mb-2">
+                        <input class="form-control" name="Prenom" placeholder="Prénom" required>
+                    </div>
+                    <div class="mb-2">
+                        <input class="form-control" name="Email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="password" class="form-control" name="MotDePasse" placeholder="Mot de passe" required>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="Role" name="Role" required>
+                            <option value="webadmin">SuperAdmin</option>
+                            <option value="AdminBDD">Admin Base de Données</option>
+                            <option value="ResponsableSelf">Responsable du self</option>
+                            <option value="AgentRestauration">Agent de restauration</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">
+                        Créer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    <div class="text-center mt-4">
+        <form method="POST" action="/Logout">
+            <button type="submit" class="btn btn-danger">
+                Se déconnecter
+            </button>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -102,6 +102,7 @@ router.get('/GetMenu',isAuthenticated, async (req, res) => {
     }
 });
 
+
 router.get('/AffichageMenu', async (req, res) => {
     let connection;
     try {

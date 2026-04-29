@@ -3,22 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>Login</title>
 </head>
-<body>
-    <h1>Login</h1>
-    
-    <form method="POST" action="/Login">
-        <label for="login">Identifiant :</label>
-        <input type="text" id="login" name="login" required><br><br>
 
-        <label for="pwd">Mot de passe :</label>
-        <input type="password" id="pwd" name="pwd" required><br><br>
-        
-        <button type="submit">Se connecter</button>
-    </form>
+<body class="bg-light text-black">
 
-    <a href="/Register" class="card-link">Nouveau Compte</a>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-12 col-md-6 col-lg-5">
+            
+            <h1 class="text-center mb-6">Login</h1>
+
+            <form id="loginForm" method="POST" action="/Login">
+
+                <div class="mb-3">
+                    <label for="login" class="form-label">Identifiant :</label>
+                    <input type="text" id="login" name="login" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="pwd" class="form-label">Mot de passe :</label>
+                    <input type="password" id="pwd" name="pwd" class="form-control" required>
+                    <span id="errorMsg" class="text-danger d-block mt-1"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary text-white text-center">Se connecter</button>
+
+            </form>
+
+            <div class="bg-success p-2 rounded text-center mt-3">
+                <a href="/Register" class="text-white">Nouveau Compte</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const form = document.getElementById("loginForm");
+const errorMsg = document.getElementById("errorMsg");
+let interval;
+
+function startTimer(seconds) {
+    clearInterval(interval);
+
+    let remaining = seconds;
+
+    function update() {
+        const min = String(Math.floor(remaining / 60)).padStart(2, "0");
+        const sec = String(remaining % 60).padStart(2, "0");
+
+        errorMsg.textContent = `Trop de tentatives. Réessayez dans ${min}:${sec}`;
+
+        if (remaining <= 0) {
+            clearInterval(interval);
+            errorMsg.textContent = "";
+            form.querySelector("button").disabled = false;
+            return;
+        }
+
+        remaining--;
+    }
+
+    update();
+    interval = setInterval(update, 1000);
+}
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("/Login", {
+        method: "POST",
+        body: new URLSearchParams(new FormData(form))
+    });
+
+    // LOGIN OK
+    if (response.redirected) {
+        window.location.href = response.url;
+        return;
+    }
+
+    // BLOQUÉ (429)
+    if (response.status === 429) {
+        let data = {};
+
+        try {
+            data = await response.json();
+        } catch {}
+
+        form.querySelector("button").disabled = true;
+        startTimer(data.retryAfter || 300);
+        return;
+    }
+
+    // ERREUR LOGIN
+    const text = await response.text();
+    errorMsg.textContent = text;
+});
+</script>
 
 </body>
 </html>
