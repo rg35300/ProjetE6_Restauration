@@ -38,6 +38,8 @@ function DroitAcces(rolesAutorises) {
 }
 
 
+
+
 //Routage entre les pages de logins et la déconnection
 router.get('/', (req,res) =>{
 	res.sendFile(join(__dirname, '../views','Login.html'));

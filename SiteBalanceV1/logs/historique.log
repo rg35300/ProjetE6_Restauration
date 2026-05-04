@@ -2591,3 +2591,650 @@
 {"code":400,"level":"warn","message":"POST /Logout 302 4.092 ms","timestamp":"2026-04-29 14:08:44"}
 {"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:08:44"}
 {"code":200,"level":"info","message":"GET / 200 3.799 ms","timestamp":"2026-04-29 14:08:44"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-29 14:21:26"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-29 14:21:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:28"}
+{"code":400,"level":"warn","message":"POST /Login 302 103.660 ms","timestamp":"2026-04-29 14:21:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:28"}
+{"code":200,"level":"info","message":"GET /Home 200 6.096 ms","timestamp":"2026-04-29 14:21:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:28"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.767 ms","timestamp":"2026-04-29 14:21:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:50"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 9.864 ms","timestamp":"2026-04-29 14:21:50"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:50"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-29 14:21:50"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-29&date_fin=2026-04-29 304 25.190 ms","timestamp":"2026-04-29 14:21:50"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:51"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 7.729 ms","timestamp":"2026-04-29 14:21:51"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:51"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-29 14:21:51"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-29&date_fin=2026-04-29 304 6.128 ms","timestamp":"2026-04-29 14:21:51"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:52"}
+{"code":400,"level":"warn","message":"GET /BDD 304 6.198 ms","timestamp":"2026-04-29 14:21:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:21:54"}
+{"code":400,"level":"warn","message":"GET /Menu 304 7.734 ms","timestamp":"2026-04-29 14:21:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:23:02"}
+{"code":200,"level":"info","message":"GET /Menu 200 7.213 ms","timestamp":"2026-04-29 14:23:02"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:23:46"}
+{"code":400,"level":"warn","message":"GET /Menu 304 8.856 ms","timestamp":"2026-04-29 14:23:46"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:23:55"}
+{"code":400,"level":"warn","message":"GET /Home 304 5.118 ms","timestamp":"2026-04-29 14:23:55"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:24:09"}
+{"code":200,"level":"info","message":"GET /Home 200 6.676 ms","timestamp":"2026-04-29 14:24:09"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:24:15"}
+{"code":200,"level":"info","message":"GET /Home 200 8.407 ms","timestamp":"2026-04-29 14:24:15"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:24:20"}
+{"code":200,"level":"info","message":"GET /Home 200 6.134 ms","timestamp":"2026-04-29 14:24:20"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:24:24"}
+{"code":200,"level":"info","message":"GET /Home 200 6.215 ms","timestamp":"2026-04-29 14:24:24"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:26:53"}
+{"code":400,"level":"warn","message":"POST /Logout 302 5.640 ms","timestamp":"2026-04-29 14:26:53"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:26:53"}
+{"code":200,"level":"info","message":"GET / 200 3.340 ms","timestamp":"2026-04-29 14:26:53"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:27:11"}
+{"code":501,"level":"error","message":"POST /Login 401 8.702 ms","timestamp":"2026-04-29 14:27:11"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:27:12"}
+{"code":501,"level":"error","message":"POST /Login 401 5.793 ms","timestamp":"2026-04-29 14:27:12"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:27:13"}
+{"code":501,"level":"error","message":"POST /Login 401 4.994 ms","timestamp":"2026-04-29 14:27:13"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:27:14"}
+{"code":501,"level":"error","message":"POST /Login 401 7.783 ms","timestamp":"2026-04-29 14:27:14"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:27:15"}
+{"code":400,"level":"warn","message":"IP bloquée : 10.160.112.6","timestamp":"2026-04-29 14:27:15"}
+{"code":501,"level":"error","message":"POST /Login 401 11.001 ms","timestamp":"2026-04-29 14:27:15"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:27:16"}
+{"code":501,"level":"error","message":"POST /Login 429 6.456 ms","timestamp":"2026-04-29 14:27:16"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-29 14:46:12"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-29 14:49:20"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-29 14:49:20"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:49:20"}
+{"code":200,"level":"info","message":"GET / 200 18.917 ms","timestamp":"2026-04-29 14:49:20"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:49:21"}
+{"code":200,"level":"info","message":"GET / 200 16.652 ms","timestamp":"2026-04-29 14:49:21"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:49:28"}
+{"code":400,"level":"warn","message":"POST /Login 302 94.673 ms","timestamp":"2026-04-29 14:49:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:49:28"}
+{"code":200,"level":"info","message":"GET /Home 200 12.004 ms","timestamp":"2026-04-29 14:49:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 14:49:28"}
+{"code":400,"level":"warn","message":"GET /Home 304 4.771 ms","timestamp":"2026-04-29 14:49:28"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-29 15:09:43"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-29 15:09:43"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:09:44"}
+{"code":400,"level":"warn","message":"GET /Home 302 125.871 ms","timestamp":"2026-04-29 15:09:44"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:09:44"}
+{"code":200,"level":"info","message":"GET / 200 25.953 ms","timestamp":"2026-04-29 15:09:44"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:10:25"}
+{"code":400,"level":"warn","message":"GET / 304 15.986 ms","timestamp":"2026-04-29 15:10:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:10:29"}
+{"code":400,"level":"warn","message":"POST /Login 302 122.508 ms","timestamp":"2026-04-29 15:10:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:10:29"}
+{"code":200,"level":"info","message":"GET /Home 200 9.857 ms","timestamp":"2026-04-29 15:10:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:10:29"}
+{"code":400,"level":"warn","message":"GET /Home 304 5.403 ms","timestamp":"2026-04-29 15:10:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:10:29"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 6.706 ms","timestamp":"2026-04-29 15:10:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:11:52"}
+{"code":200,"level":"info","message":"GET /Home 200 12.457 ms","timestamp":"2026-04-29 15:11:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:11:52"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.739 ms","timestamp":"2026-04-29 15:11:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:13:01"}
+{"code":200,"level":"info","message":"GET /Home 200 9.881 ms","timestamp":"2026-04-29 15:13:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:13:01"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 7.087 ms","timestamp":"2026-04-29 15:13:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:14:37"}
+{"code":200,"level":"info","message":"GET /Home 200 10.921 ms","timestamp":"2026-04-29 15:14:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:14:37"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 4.331 ms","timestamp":"2026-04-29 15:14:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:16:01"}
+{"code":200,"level":"info","message":"GET /Home 200 7.802 ms","timestamp":"2026-04-29 15:16:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:16:01"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 4.324 ms","timestamp":"2026-04-29 15:16:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:18:31"}
+{"code":200,"level":"info","message":"GET /Home 200 11.265 ms","timestamp":"2026-04-29 15:18:31"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-29 15:18:31"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 4.520 ms","timestamp":"2026-04-29 15:18:31"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 08:25:14"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 08:25:14"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:25:49"}
+{"code":200,"level":"info","message":"GET / 200 26.114 ms","timestamp":"2026-04-30 08:25:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:25:49"}
+{"code":501,"level":"error","message":"GET /favicon.ico 404 13.269 ms","timestamp":"2026-04-30 08:25:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:31:54"}
+{"code":400,"level":"warn","message":"POST /Login 302 108.126 ms","timestamp":"2026-04-30 08:31:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:31:54"}
+{"code":200,"level":"info","message":"GET /Home 200 27.063 ms","timestamp":"2026-04-30 08:31:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:31:54"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.511 ms","timestamp":"2026-04-30 08:31:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:31:54"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 8.405 ms","timestamp":"2026-04-30 08:31:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:34:53"}
+{"code":200,"level":"info","message":"GET /Home 200 10.584 ms","timestamp":"2026-04-30 08:34:53"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:34:53"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 9.630 ms","timestamp":"2026-04-30 08:34:53"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:35:27"}
+{"code":200,"level":"info","message":"GET /Home 200 11.590 ms","timestamp":"2026-04-30 08:35:27"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:35:27"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 6.541 ms","timestamp":"2026-04-30 08:35:27"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:35:37"}
+{"code":200,"level":"info","message":"GET /Home 200 17.120 ms","timestamp":"2026-04-30 08:35:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:35:37"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.932 ms","timestamp":"2026-04-30 08:35:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:36:25"}
+{"code":200,"level":"info","message":"GET /Home 200 16.120 ms","timestamp":"2026-04-30 08:36:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:36:25"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 9.425 ms","timestamp":"2026-04-30 08:36:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:36:53"}
+{"code":200,"level":"info","message":"GET /Home 200 9.951 ms","timestamp":"2026-04-30 08:36:53"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:36:54"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 6.370 ms","timestamp":"2026-04-30 08:36:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:37:26"}
+{"code":200,"level":"info","message":"GET /Home 200 12.401 ms","timestamp":"2026-04-30 08:37:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:37:26"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.105 ms","timestamp":"2026-04-30 08:37:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:38:16"}
+{"code":200,"level":"info","message":"GET /Home 200 9.056 ms","timestamp":"2026-04-30 08:38:16"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:38:16"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 13.187 ms","timestamp":"2026-04-30 08:38:16"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:39:32"}
+{"code":200,"level":"info","message":"GET /Home 200 8.260 ms","timestamp":"2026-04-30 08:39:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:39:32"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 7.060 ms","timestamp":"2026-04-30 08:39:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:42:42"}
+{"code":200,"level":"info","message":"GET /Home 200 6.337 ms","timestamp":"2026-04-30 08:42:42"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:42:42"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 7.093 ms","timestamp":"2026-04-30 08:42:42"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:46:18"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 8.779 ms","timestamp":"2026-04-30 08:46:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:47:31"}
+{"code":400,"level":"warn","message":"GET /Home 304 7.091 ms","timestamp":"2026-04-30 08:47:31"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:47:31"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 6.191 ms","timestamp":"2026-04-30 08:47:31"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:47:48"}
+{"code":200,"level":"info","message":"GET /Home 200 7.880 ms","timestamp":"2026-04-30 08:47:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:47:48"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 7.563 ms","timestamp":"2026-04-30 08:47:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:48:34"}
+{"code":200,"level":"info","message":"GET /Home 200 6.337 ms","timestamp":"2026-04-30 08:48:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:48:34"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.963 ms","timestamp":"2026-04-30 08:48:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:50:41"}
+{"code":200,"level":"info","message":"GET /Home 200 7.264 ms","timestamp":"2026-04-30 08:50:41"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:50:41"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.743 ms","timestamp":"2026-04-30 08:50:41"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:50:52"}
+{"code":200,"level":"info","message":"GET /Home 200 9.603 ms","timestamp":"2026-04-30 08:50:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:50:52"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 13.474 ms","timestamp":"2026-04-30 08:50:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:51:01"}
+{"code":200,"level":"info","message":"GET /Home 200 8.773 ms","timestamp":"2026-04-30 08:51:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:51:01"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.610 ms","timestamp":"2026-04-30 08:51:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:56:15"}
+{"code":200,"level":"info","message":"GET /Home 200 9.090 ms","timestamp":"2026-04-30 08:56:15"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:56:15"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 9.552 ms","timestamp":"2026-04-30 08:56:15"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:56:46"}
+{"code":200,"level":"info","message":"GET /Home 200 8.575 ms","timestamp":"2026-04-30 08:56:46"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:56:46"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 14.014 ms","timestamp":"2026-04-30 08:56:46"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:57:18"}
+{"code":200,"level":"info","message":"GET /Home 200 8.788 ms","timestamp":"2026-04-30 08:57:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:57:18"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 6.072 ms","timestamp":"2026-04-30 08:57:18"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 08:58:22"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 08:58:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:58:23"}
+{"code":400,"level":"warn","message":"GET /Home 302 46.773 ms","timestamp":"2026-04-30 08:58:23"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:58:23"}
+{"code":400,"level":"warn","message":"GET / 304 6.293 ms","timestamp":"2026-04-30 08:58:23"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:58:34"}
+{"code":400,"level":"warn","message":"POST /Login 302 132.857 ms","timestamp":"2026-04-30 08:58:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:58:34"}
+{"code":200,"level":"info","message":"GET /Home 200 13.351 ms","timestamp":"2026-04-30 08:58:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:58:34"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.773 ms","timestamp":"2026-04-30 08:58:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 08:58:34"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 6.079 ms","timestamp":"2026-04-30 08:58:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:00:29"}
+{"code":400,"level":"warn","message":"GET /Home 304 6.643 ms","timestamp":"2026-04-30 09:00:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:00:29"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 5.546 ms","timestamp":"2026-04-30 09:00:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:01:38"}
+{"code":200,"level":"info","message":"GET /Home 200 6.771 ms","timestamp":"2026-04-30 09:01:38"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:01:38"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 4.644 ms","timestamp":"2026-04-30 09:01:38"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:02:06"}
+{"code":200,"level":"info","message":"GET /Home 200 5.353 ms","timestamp":"2026-04-30 09:02:06"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:02:06"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 4.836 ms","timestamp":"2026-04-30 09:02:06"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:02:33"}
+{"code":400,"level":"warn","message":"GET /Home 304 5.480 ms","timestamp":"2026-04-30 09:02:33"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.99.64","timestamp":"2026-04-30 09:02:33"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 7.168 ms","timestamp":"2026-04-30 09:02:33"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 09:02:54"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 10:18:19"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 10:18:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:18:34"}
+{"code":400,"level":"warn","message":"GET / 304 23.346 ms","timestamp":"2026-04-30 10:18:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:19:10"}
+{"code":400,"level":"warn","message":"POST /Login 302 94.096 ms","timestamp":"2026-04-30 10:19:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:19:10"}
+{"code":200,"level":"info","message":"GET /Home 200 8.681 ms","timestamp":"2026-04-30 10:19:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:19:10"}
+{"code":400,"level":"warn","message":"GET /Home 304 4.208 ms","timestamp":"2026-04-30 10:19:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:19:10"}
+{"code":501,"level":"error","message":"GET /img/salade_img.jpg 404 4.206 ms","timestamp":"2026-04-30 10:19:10"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 10:24:17"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 10:24:17"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:24:17"}
+{"code":400,"level":"warn","message":"GET /Home 302 103.556 ms","timestamp":"2026-04-30 10:24:17"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:24:17"}
+{"code":400,"level":"warn","message":"GET / 304 30.551 ms","timestamp":"2026-04-30 10:24:17"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:24:25"}
+{"code":400,"level":"warn","message":"POST /Login 302 142.585 ms","timestamp":"2026-04-30 10:24:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:24:25"}
+{"code":200,"level":"info","message":"GET /Home 200 13.003 ms","timestamp":"2026-04-30 10:24:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:24:25"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.760 ms","timestamp":"2026-04-30 10:24:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:24:25"}
+{"code":200,"level":"info","message":"GET /img/salade_img.jpg 200 4.647 ms","timestamp":"2026-04-30 10:24:25"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 10:26:52"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 10:26:52"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 10:27:59"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 10:27:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:28:01"}
+{"code":400,"level":"warn","message":"GET /Home 302 66.183 ms","timestamp":"2026-04-30 10:28:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:28:01"}
+{"code":400,"level":"warn","message":"GET / 304 6.514 ms","timestamp":"2026-04-30 10:28:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:28:10"}
+{"code":400,"level":"warn","message":"POST /Login 302 162.771 ms","timestamp":"2026-04-30 10:28:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:28:10"}
+{"code":200,"level":"info","message":"GET /Home 200 4.905 ms","timestamp":"2026-04-30 10:28:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:28:10"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.911 ms","timestamp":"2026-04-30 10:28:10"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 10:31:43"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 10:31:43"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:31:49"}
+{"code":400,"level":"warn","message":"GET /Home 302 17.094 ms","timestamp":"2026-04-30 10:31:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:31:49"}
+{"code":200,"level":"info","message":"GET / 200 6.664 ms","timestamp":"2026-04-30 10:31:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:31:49"}
+{"code":501,"level":"error","message":"GET /favicon.ico 404 8.708 ms","timestamp":"2026-04-30 10:31:49"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 10:31:54"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 10:31:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:32:39"}
+{"code":400,"level":"warn","message":"GET / 304 18.855 ms","timestamp":"2026-04-30 10:32:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:37:14"}
+{"code":400,"level":"warn","message":"POST /Login 302 96.173 ms","timestamp":"2026-04-30 10:37:14"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:37:14"}
+{"code":200,"level":"info","message":"GET /Home 200 6.011 ms","timestamp":"2026-04-30 10:37:14"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:37:14"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.379 ms","timestamp":"2026-04-30 10:37:14"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:39:29"}
+{"code":200,"level":"info","message":"GET /Home 200 5.670 ms","timestamp":"2026-04-30 10:39:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:45:35"}
+{"code":200,"level":"info","message":"GET /Home 200 7.045 ms","timestamp":"2026-04-30 10:45:35"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:45:55"}
+{"code":400,"level":"warn","message":"POST /Logout 302 3.879 ms","timestamp":"2026-04-30 10:45:55"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:45:55"}
+{"code":200,"level":"info","message":"GET / 200 5.665 ms","timestamp":"2026-04-30 10:45:55"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:47:15"}
+{"code":400,"level":"warn","message":"GET / 304 5.281 ms","timestamp":"2026-04-30 10:47:15"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:47:20"}
+{"code":400,"level":"warn","message":"POST /Login 302 75.378 ms","timestamp":"2026-04-30 10:47:21"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:47:21"}
+{"code":200,"level":"info","message":"GET /Home 200 4.043 ms","timestamp":"2026-04-30 10:47:21"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 10:47:21"}
+{"code":400,"level":"warn","message":"GET /Home 304 2.464 ms","timestamp":"2026-04-30 10:47:21"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:01:32"}
+{"code":400,"level":"warn","message":"POST /Logout 302 3.175 ms","timestamp":"2026-04-30 11:01:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:01:32"}
+{"code":200,"level":"info","message":"GET / 200 2.784 ms","timestamp":"2026-04-30 11:01:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:01:32"}
+{"code":501,"level":"error","message":"GET /path/to/your-image.jpg 404 3.465 ms","timestamp":"2026-04-30 11:01:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:01:32"}
+{"code":501,"level":"error","message":"GET /path/to/your-image.jpg 404 2.955 ms","timestamp":"2026-04-30 11:01:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:02:03"}
+{"code":200,"level":"info","message":"GET / 200 3.739 ms","timestamp":"2026-04-30 11:02:03"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:02:09"}
+{"code":200,"level":"info","message":"GET / 200 16.665 ms","timestamp":"2026-04-30 11:02:09"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:02:20"}
+{"code":200,"level":"info","message":"GET / 200 5.338 ms","timestamp":"2026-04-30 11:02:20"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:02:26"}
+{"code":200,"level":"info","message":"GET / 200 9.741 ms","timestamp":"2026-04-30 11:02:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:08:59"}
+{"code":200,"level":"info","message":"GET / 200 8.703 ms","timestamp":"2026-04-30 11:08:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:10:47"}
+{"code":200,"level":"info","message":"GET / 200 5.197 ms","timestamp":"2026-04-30 11:10:47"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:11:32"}
+{"code":200,"level":"info","message":"GET / 200 10.755 ms","timestamp":"2026-04-30 11:11:32"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:36"}
+{"code":200,"level":"info","message":"GET / 200 5.555 ms","timestamp":"2026-04-30 11:13:36"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:37"}
+{"code":400,"level":"warn","message":"GET / 304 4.173 ms","timestamp":"2026-04-30 11:13:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:37"}
+{"code":400,"level":"warn","message":"GET / 304 3.529 ms","timestamp":"2026-04-30 11:13:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:37"}
+{"code":400,"level":"warn","message":"GET / 304 8.858 ms","timestamp":"2026-04-30 11:13:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:38"}
+{"code":400,"level":"warn","message":"GET / 304 3.680 ms","timestamp":"2026-04-30 11:13:38"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:38"}
+{"code":400,"level":"warn","message":"GET / 304 3.996 ms","timestamp":"2026-04-30 11:13:38"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:38"}
+{"code":400,"level":"warn","message":"GET / 304 3.518 ms","timestamp":"2026-04-30 11:13:38"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:39"}
+{"code":400,"level":"warn","message":"GET / 304 5.943 ms","timestamp":"2026-04-30 11:13:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:13:39"}
+{"code":400,"level":"warn","message":"GET / 304 3.327 ms","timestamp":"2026-04-30 11:13:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:17:19"}
+{"code":200,"level":"info","message":"GET / 200 4.752 ms","timestamp":"2026-04-30 11:17:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 11:27:19"}
+{"code":400,"level":"warn","message":"GET / 304 5.289 ms","timestamp":"2026-04-30 11:27:19"}
+{"code":200,"level":"info","message":"Process sur le port 3000: 84901","timestamp":"2026-04-30 13:44:09"}
+{"code":200,"level":"info","message":"Process 84901 tué","timestamp":"2026-04-30 13:44:09"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-04-30 13:44:09"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:44:10"}
+{"code":400,"level":"warn","message":"GET / 304 101.878 ms","timestamp":"2026-04-30 13:44:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:44:18"}
+{"code":400,"level":"warn","message":"POST /Login 302 120.410 ms","timestamp":"2026-04-30 13:44:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:44:18"}
+{"code":200,"level":"info","message":"GET /Home 200 16.516 ms","timestamp":"2026-04-30 13:44:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:44:18"}
+{"code":400,"level":"warn","message":"GET /Home 304 6.276 ms","timestamp":"2026-04-30 13:44:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:44:37"}
+{"code":200,"level":"info","message":"GET /Home 200 11.877 ms","timestamp":"2026-04-30 13:44:37"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:48"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 9.729 ms","timestamp":"2026-04-30 13:45:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:48"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:45:48"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-30&date_fin=2026-04-30 200 39.788 ms","timestamp":"2026-04-30 13:45:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:50"}
+{"code":400,"level":"warn","message":"GET /BDD 304 8.987 ms","timestamp":"2026-04-30 13:45:50"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:52"}
+{"code":400,"level":"warn","message":"GET /Menu 304 10.976 ms","timestamp":"2026-04-30 13:45:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:54"}
+{"code":400,"level":"warn","message":"GET /BDD 304 9.752 ms","timestamp":"2026-04-30 13:45:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:55"}
+{"code":200,"level":"info","message":"GET /Home 200 5.272 ms","timestamp":"2026-04-30 13:45:55"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:58"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 6.726 ms","timestamp":"2026-04-30 13:45:58"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:45:59"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:45:59"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-30&date_fin=2026-04-30 304 12.852 ms","timestamp":"2026-04-30 13:45:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:02"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:02"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-09&date_fin= 200 11.381 ms","timestamp":"2026-04-30 13:46:02"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:04"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:04"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-09&date_fin=2026-04-25 200 9.260 ms","timestamp":"2026-04-30 13:46:04"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:07"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:07"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-09&date_fin=2026-03-31 200 10.740 ms","timestamp":"2026-04-30 13:46:07"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:10"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:10"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Organique&date_debut=2026-04-09&date_fin=2026-03-31 200 9.439 ms","timestamp":"2026-04-30 13:46:10"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:13"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:13"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Organique&date_debut=&date_fin=2026-03-31 200 11.305 ms","timestamp":"2026-04-30 13:46:13"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:17"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:17"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Organique&date_debut=&date_fin= 304 9.722 ms","timestamp":"2026-04-30 13:46:17"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:46:20"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:46:20"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=&date_fin= 200 8.764 ms","timestamp":"2026-04-30 13:46:20"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:49:57"}
+{"code":400,"level":"warn","message":"GET /Home 304 5.645 ms","timestamp":"2026-04-30 13:49:57"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:49:58"}
+{"code":400,"level":"warn","message":"GET /BDD 304 5.359 ms","timestamp":"2026-04-30 13:49:58"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:00"}
+{"code":400,"level":"warn","message":"GET /Dechet 304 4.937 ms","timestamp":"2026-04-30 13:50:00"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:07"}
+{"code":200,"level":"info","message":"GET /Dechet?balance=1 200 6.210 ms","timestamp":"2026-04-30 13:50:07"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:21"}
+{"code":400,"level":"warn","message":"GET /Dechet?balance=1 304 6.814 ms","timestamp":"2026-04-30 13:50:21"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:22"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 7.387 ms","timestamp":"2026-04-30 13:50:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:22"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:22"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-30&date_fin=2026-04-30 304 3.639 ms","timestamp":"2026-04-30 13:50:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:26"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:26"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Organique&date_debut=&date_fin= 304 5.803 ms","timestamp":"2026-04-30 13:50:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:28"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:28"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=&date_fin= 304 6.489 ms","timestamp":"2026-04-30 13:50:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:39"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:39"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-30&date_fin= 200 10.605 ms","timestamp":"2026-04-30 13:50:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:42"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:42"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-30&date_fin=2026-03-30 200 8.729 ms","timestamp":"2026-04-30 13:50:42"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:49"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:49"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-01-27&date_fin=2026-03-30 200 8.413 ms","timestamp":"2026-04-30 13:50:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:50:54"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:50:54"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Organique&date_debut=2026-01-27&date_fin=2026-03-30 200 8.368 ms","timestamp":"2026-04-30 13:50:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:56:59"}
+{"code":400,"level":"warn","message":"GET /Home 304 8.487 ms","timestamp":"2026-04-30 13:56:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:58:18"}
+{"code":400,"level":"warn","message":"POST /Logout 302 6.511 ms","timestamp":"2026-04-30 13:58:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:58:18"}
+{"code":200,"level":"info","message":"GET / 200 4.185 ms","timestamp":"2026-04-30 13:58:18"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:58:25"}
+{"code":400,"level":"warn","message":"POST /Login 302 75.742 ms","timestamp":"2026-04-30 13:58:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:58:26"}
+{"code":200,"level":"info","message":"GET /Home 200 2.798 ms","timestamp":"2026-04-30 13:58:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:58:26"}
+{"code":400,"level":"warn","message":"GET /Home 304 4.044 ms","timestamp":"2026-04-30 13:58:26"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:59:09"}
+{"code":400,"level":"warn","message":"GET /Dechet 304 7.167 ms","timestamp":"2026-04-30 13:59:09"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:59:11"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 6.098 ms","timestamp":"2026-04-30 13:59:11"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:59:11"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-04-30 13:59:11"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-04-30&date_fin=2026-04-30 304 4.405 ms","timestamp":"2026-04-30 13:59:11"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:59:14"}
+{"code":400,"level":"warn","message":"GET /Menu 304 9.847 ms","timestamp":"2026-04-30 13:59:14"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-04-30 13:59:58"}
+{"code":400,"level":"warn","message":"GET /Home 304 6.092 ms","timestamp":"2026-04-30 13:59:58"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-04-30 14:24:55"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 13:44:55"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 13:44:55"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:44:55"}
+{"code":200,"level":"info","message":"GET / 200 117.824 ms","timestamp":"2026-05-04 13:44:55"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:06"}
+{"code":400,"level":"warn","message":"POST /Login 302 115.828 ms","timestamp":"2026-05-04 13:45:06"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:06"}
+{"code":200,"level":"info","message":"GET /Home 200 15.623 ms","timestamp":"2026-05-04 13:45:06"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:06"}
+{"code":400,"level":"warn","message":"GET /Home 304 5.996 ms","timestamp":"2026-05-04 13:45:06"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:42"}
+{"code":200,"level":"info","message":"GET /Dechet 200 13.228 ms","timestamp":"2026-05-04 13:45:42"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:43"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 9.554 ms","timestamp":"2026-05-04 13:45:43"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:43"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-05-04 13:45:43"}
+{"code":200,"level":"info","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-05-04&date_fin=2026-05-04 200 24.578 ms","timestamp":"2026-05-04 13:45:43"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:46"}
+{"code":400,"level":"warn","message":"GET /Graphique 304 10.141 ms","timestamp":"2026-05-04 13:45:46"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:46"}
+{"code":200,"level":"info","message":"Libération de la connexion à la BDD","timestamp":"2026-05-04 13:45:46"}
+{"code":400,"level":"warn","message":"GET /API/Data_BDD?type=Plastique&date_debut=2026-05-04&date_fin=2026-05-04 304 7.080 ms","timestamp":"2026-05-04 13:45:46"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:46"}
+{"code":400,"level":"warn","message":"GET /BDD 304 15.962 ms","timestamp":"2026-05-04 13:45:46"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:49"}
+{"code":200,"level":"info","message":"GET /Menu 200 22.424 ms","timestamp":"2026-05-04 13:45:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:50"}
+{"code":400,"level":"warn","message":"GET /Home 304 8.961 ms","timestamp":"2026-05-04 13:45:50"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:56"}
+{"code":400,"level":"warn","message":"POST /Logout 302 10.379 ms","timestamp":"2026-05-04 13:45:56"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:45:56"}
+{"code":200,"level":"info","message":"GET / 200 6.169 ms","timestamp":"2026-05-04 13:45:56"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:47:48"}
+{"code":400,"level":"warn","message":"POST /Login 302 78.988 ms","timestamp":"2026-05-04 13:47:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:47:48"}
+{"code":200,"level":"info","message":"GET /Home 200 4.903 ms","timestamp":"2026-05-04 13:47:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:47:48"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.344 ms","timestamp":"2026-05-04 13:47:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:51:30"}
+{"code":200,"level":"info","message":"GET /Home 200 26.418 ms","timestamp":"2026-05-04 13:51:30"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:53:15"}
+{"code":200,"level":"info","message":"GET /Home 200 11.549 ms","timestamp":"2026-05-04 13:53:15"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:53:47"}
+{"code":200,"level":"info","message":"GET /Home 200 10.484 ms","timestamp":"2026-05-04 13:53:47"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:54:16"}
+{"code":200,"level":"info","message":"GET /Home 200 14.403 ms","timestamp":"2026-05-04 13:54:16"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:54:22"}
+{"code":400,"level":"warn","message":"GET /BDD 304 11.372 ms","timestamp":"2026-05-04 13:54:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:54:24"}
+{"code":400,"level":"warn","message":"GET /Dechet 304 10.137 ms","timestamp":"2026-05-04 13:54:24"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:54:25"}
+{"code":400,"level":"warn","message":"GET /Menu 304 9.438 ms","timestamp":"2026-05-04 13:54:25"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:56:49"}
+{"code":200,"level":"info","message":"GET /Menu 200 10.915 ms","timestamp":"2026-05-04 13:56:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:56:49"}
+{"code":400,"level":"warn","message":"GET /GetMenu 304 34.639 ms","timestamp":"2026-05-04 13:56:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:57:41"}
+{"code":200,"level":"info","message":"GET /ExportCSV 200 32.309 ms","timestamp":"2026-05-04 13:57:41"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 13:59:22"}
+{"code":501,"level":"error","message":"GET /AjoutMenu%7B%22AAA%22,%22BBB%22,%22CCC%22%7D 404 12.502 ms","timestamp":"2026-05-04 13:59:22"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:06:53"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:06:53"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:11"}
+{"code":400,"level":"warn","message":"GET / 304 68.629 ms","timestamp":"2026-05-04 14:07:11"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:22"}
+{"code":400,"level":"warn","message":"POST /Login 302 114.339 ms","timestamp":"2026-05-04 14:07:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:22"}
+{"code":200,"level":"info","message":"GET /Home 200 12.638 ms","timestamp":"2026-05-04 14:07:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:22"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.596 ms","timestamp":"2026-05-04 14:07:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:24"}
+{"code":400,"level":"warn","message":"GET /BDD 304 6.727 ms","timestamp":"2026-05-04 14:07:24"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:45"}
+{"code":400,"level":"warn","message":"POST /AddUtilisateur 302 33.879 ms","timestamp":"2026-05-04 14:07:45"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:45"}
+{"code":200,"level":"info","message":"GET /BDD 200 4.687 ms","timestamp":"2026-05-04 14:07:45"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:48"}
+{"code":400,"level":"warn","message":"POST /Logout 302 5.242 ms","timestamp":"2026-05-04 14:07:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:48"}
+{"code":200,"level":"info","message":"GET / 200 8.810 ms","timestamp":"2026-05-04 14:07:48"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:52"}
+{"code":501,"level":"error","message":"POST /Login 401 11.507 ms","timestamp":"2026-05-04 14:07:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:56"}
+{"code":501,"level":"error","message":"POST /Login 401 8.808 ms","timestamp":"2026-05-04 14:07:56"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:57"}
+{"code":501,"level":"error","message":"POST /Login 401 6.975 ms","timestamp":"2026-05-04 14:07:57"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:59"}
+{"code":501,"level":"error","message":"POST /Login 401 6.044 ms","timestamp":"2026-05-04 14:07:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:07:59"}
+{"code":400,"level":"warn","message":"IP bloquée : 10.160.112.6","timestamp":"2026-05-04 14:07:59"}
+{"code":501,"level":"error","message":"POST /Login 401 6.647 ms","timestamp":"2026-05-04 14:07:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:08:00"}
+{"code":501,"level":"error","message":"POST /Login 429 3.938 ms","timestamp":"2026-05-04 14:08:00"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:08:20"}
+{"code":400,"level":"warn","message":"GET / 304 4.262 ms","timestamp":"2026-05-04 14:08:20"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:08:23"}
+{"code":501,"level":"error","message":"POST /Login 429 3.540 ms","timestamp":"2026-05-04 14:08:23"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:11"}
+{"code":501,"level":"error","message":"POST /Login 401 6.567 ms","timestamp":"2026-05-04 14:10:11"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:19"}
+{"code":400,"level":"warn","message":"POST /Login 302 75.139 ms","timestamp":"2026-05-04 14:10:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:19"}
+{"code":200,"level":"info","message":"GET /Home 200 2.637 ms","timestamp":"2026-05-04 14:10:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:19"}
+{"code":400,"level":"warn","message":"GET /Home 304 4.104 ms","timestamp":"2026-05-04 14:10:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:21"}
+{"code":400,"level":"warn","message":"GET /BDD 304 5.171 ms","timestamp":"2026-05-04 14:10:21"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:24"}
+{"code":400,"level":"warn","message":"POST /ReadDataBase 302 14.499 ms","timestamp":"2026-05-04 14:10:24"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:24"}
+{"code":200,"level":"info","message":"GET /BDD 200 14.080 ms","timestamp":"2026-05-04 14:10:24"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:34"}
+{"code":400,"level":"warn","message":"POST /Logout 302 2.708 ms","timestamp":"2026-05-04 14:10:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:34"}
+{"code":200,"level":"info","message":"GET / 200 6.652 ms","timestamp":"2026-05-04 14:10:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:39"}
+{"code":501,"level":"error","message":"POST /Login 401 7.051 ms","timestamp":"2026-05-04 14:10:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:59"}
+{"code":400,"level":"warn","message":"POST /Login 302 74.103 ms","timestamp":"2026-05-04 14:10:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:59"}
+{"code":200,"level":"info","message":"GET /Home 200 4.190 ms","timestamp":"2026-05-04 14:10:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:10:59"}
+{"code":400,"level":"warn","message":"GET /Home 304 2.272 ms","timestamp":"2026-05-04 14:10:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:19"}
+{"code":400,"level":"warn","message":"POST /Logout 302 20.670 ms","timestamp":"2026-05-04 14:12:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:19"}
+{"code":200,"level":"info","message":"GET / 200 25.814 ms","timestamp":"2026-05-04 14:12:19"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:24"}
+{"code":200,"level":"info","message":"GET /Register 200 6.579 ms","timestamp":"2026-05-04 14:12:24"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:34"}
+{"code":400,"level":"warn","message":"POST /NewUtilisateur 302 77.696 ms","timestamp":"2026-05-04 14:12:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:34"}
+{"code":400,"level":"warn","message":"GET /Home 302 1.796 ms","timestamp":"2026-05-04 14:12:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:34"}
+{"code":400,"level":"warn","message":"GET / 304 2.011 ms","timestamp":"2026-05-04 14:12:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:39"}
+{"code":400,"level":"warn","message":"POST /Login 302 80.510 ms","timestamp":"2026-05-04 14:12:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:39"}
+{"code":200,"level":"info","message":"GET /Home 200 3.880 ms","timestamp":"2026-05-04 14:12:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:39"}
+{"code":400,"level":"warn","message":"GET /Home 304 2.478 ms","timestamp":"2026-05-04 14:12:39"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:41"}
+{"code":501,"level":"error","message":"GET /Graphique 403 2.759 ms","timestamp":"2026-05-04 14:12:41"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:12:43"}
+{"code":501,"level":"error","message":"GET /BDD 403 4.888 ms","timestamp":"2026-05-04 14:12:43"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:15:33"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:15:33"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:34"}
+{"code":400,"level":"warn","message":"GET /Home 302 82.819 ms","timestamp":"2026-05-04 14:15:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:34"}
+{"code":400,"level":"warn","message":"GET / 304 7.325 ms","timestamp":"2026-05-04 14:15:34"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:49"}
+{"code":400,"level":"warn","message":"POST /Login 302 99.567 ms","timestamp":"2026-05-04 14:15:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:49"}
+{"code":200,"level":"info","message":"GET /Home 200 5.347 ms","timestamp":"2026-05-04 14:15:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:49"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.639 ms","timestamp":"2026-05-04 14:15:49"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:50"}
+{"code":501,"level":"error","message":"GET /Graphique 403 5.334 ms","timestamp":"2026-05-04 14:15:50"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:52"}
+{"code":501,"level":"error","message":"GET /BDD 403 4.935 ms","timestamp":"2026-05-04 14:15:52"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:54"}
+{"code":400,"level":"warn","message":"GET /Dechet 304 7.099 ms","timestamp":"2026-05-04 14:15:54"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:15:57"}
+{"code":501,"level":"error","message":"GET /Graphique 403 5.955 ms","timestamp":"2026-05-04 14:15:57"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:16:00"}
+{"code":400,"level":"warn","message":"GET /Home 304 7.394 ms","timestamp":"2026-05-04 14:16:00"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:16:01"}
+{"code":400,"level":"warn","message":"GET /Dechet 304 5.722 ms","timestamp":"2026-05-04 14:16:01"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:16:02"}
+{"code":400,"level":"warn","message":"GET /Home 304 5.690 ms","timestamp":"2026-05-04 14:16:02"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:16:04"}
+{"code":501,"level":"error","message":"GET /Menu 403 4.818 ms","timestamp":"2026-05-04 14:16:04"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:23:59"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:23:59"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:24:00"}
+{"code":400,"level":"warn","message":"GET /Home 302 41.928 ms","timestamp":"2026-05-04 14:24:00"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:24:00"}
+{"code":400,"level":"warn","message":"GET / 304 6.155 ms","timestamp":"2026-05-04 14:24:00"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:25:22"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:25:22"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:25:28"}
+{"code":400,"level":"warn","message":"POST /Login 302 114.826 ms","timestamp":"2026-05-04 14:25:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:25:28"}
+{"code":200,"level":"info","message":"GET /Home 200 6.730 ms","timestamp":"2026-05-04 14:25:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:25:28"}
+{"code":400,"level":"warn","message":"GET /Home 304 3.511 ms","timestamp":"2026-05-04 14:25:28"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:25:29"}
+{"code":400,"level":"warn","message":"GET /Dechet 304 6.270 ms","timestamp":"2026-05-04 14:25:29"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:25:31"}
+{"code":501,"level":"error","message":"GET /Graphique 500 7.674 ms","timestamp":"2026-05-04 14:25:31"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:26:03"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:26:03"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:47:44"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:47:44"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-05-04 14:47:47"}
+{"code":400,"level":"warn","message":"GET / 304 40.195 ms","timestamp":"2026-05-04 14:47:47"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-05-04 14:49:03"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000","timestamp":"2026-05-04 14:49:03"}

@@ -34,7 +34,7 @@
         <div class="table-responsive">
             <table class="table table-bordered table-hover text-center align-middle">
 
-                <thead class="table-dark">
+                <thead class="table-basic">
                 <tr>
                     <th>Menu / Jour</th>
                     <th>Lundi</th>
@@ -156,6 +156,87 @@
 <datalist id="desserts-suggestions"></datalist>
 
 <script>
+let menusData = {};
+
+async function loadSuggestions() {
+    try {
+        const response = await fetch('/GetMenu');
+        menusData = await response.json();
+
+        const addOptions = (id, items) => {
+            const datalist = document.getElementById(id);
+            datalist.innerHTML = "";
+            const nomsVus = new Set();
+            (items || []).forEach(item => {
+                if (!nomsVus.has(item.nom)) {
+                    nomsVus.add(item.nom);
+                    const option = document.createElement('option');
+                    option.value = item.nom;
+                    datalist.appendChild(option);
+                }
+            });
+        };
+
+        addOptions('entrees-suggestions', menusData.entrees);
+        addOptions('plats-suggestions', menusData.plats);
+        addOptions('desserts-suggestions', menusData.desserts);
+
+    } catch (err) {
+        console.error("Erreur chargement suggestions:", err);
+    }
+}
+
+function calculTotalAuto() {
+    const nbrMenu = parseFloat(document.getElementById("NbrMenu").value) || 0;
+
+    const entrees = ["EntreeOrganiqueLundi","EntreeOrganiqueMardi","EntreeOrganiqueJeudi","EntreeOrganiqueVendredi"];
+    const plats = ["PlatOrganiqueLundi","PlatOrganiqueMardi","PlatOrganiqueJeudi","PlatOrganiqueVendredi"];
+    const desserts = ["DessertOrganiqueLundi","DessertOrganiqueMardi","DessertOrganiqueJeudi","DessertOrganiqueVendredi"];
+
+    let totalEntree = 0, totalPlat = 0, totalDessert = 0;
+
+    entrees.forEach(id => totalEntree += parseFloat(document.getElementById(id).value) || 0);
+    plats.forEach(id => totalPlat += parseFloat(document.getElementById(id).value) || 0);
+    desserts.forEach(id => totalDessert += parseFloat(document.getElementById(id).value) || 0);
+
+    const totalFinal = (totalEntree + totalPlat + totalDessert) * nbrMenu;
+
+    document.getElementById("resultatentre").innerText = `Total des déchets Entrées : ${(totalEntree * nbrMenu).toFixed(2)} g`;
+    document.getElementById("resultatplat").innerText = `Total des déchets Plats : ${(totalPlat * nbrMenu).toFixed(2)} g`;
+    document.getElementById("resultdessert").innerText = `Total des déchets Desserts : ${(totalDessert * nbrMenu).toFixed(2)} g`;
+    document.getElementById("resultat").innerText = `Total général des déchets : ${totalFinal.toFixed(2)} g`;
+}
+
+function autoFillPoids(type, jour) {
+    const nomInput = document.getElementById(`${type}${jour}`).value.trim();
+    const poidsInput = document.getElementById(`${type}Organique${jour}`);
+
+    if (!menusData[type.toLowerCase() + "s"]) return;
+
+    const elements = menusData[type.toLowerCase() + "s"].filter(item => item.nom === nomInput);
+
+    if (elements.length > 0) {
+        const moyenne = elements.reduce((acc, e) => acc + parseFloat(e.masse), 0) / elements.length;
+        poidsInput.value = moyenne.toFixed(2);
+    } 
+    calculTotalAuto();
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+    await loadSuggestions();
+
+    const inputs = [
+        "NbrMenu",
+        "EntreeOrganiqueLundi","EntreeOrganiqueMardi","EntreeOrganiqueJeudi","EntreeOrganiqueVendredi",
+        "PlatOrganiqueLundi","PlatOrganiqueMardi","PlatOrganiqueJeudi","PlatOrganiqueVendredi",
+        "DessertOrganiqueLundi","DessertOrganiqueMardi","DessertOrganiqueJeudi","DessertOrganiqueVendredi"
+    ];
+
+    inputs.forEach(id => {
+        const elt = document.getElementById(id);
+        if (elt) elt.addEventListener('input', calculTotalAuto);
+    });
+});
 </script>
 
 </body>

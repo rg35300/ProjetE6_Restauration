@@ -10,7 +10,9 @@ const { exec } = require('child_process');
 const mariadb = require('mariadb');
 const rateLimit = require('express-rate-limit');
 const { AddIpBan, CheckIpBan} = require('./Fonction.js');
+const path = require('path');
 
+serveur.use('/img', express.static(path.join(__dirname, '../img')));
 
 
 
