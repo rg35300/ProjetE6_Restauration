@@ -95,14 +95,12 @@ const images = [
     "/img/self.jpg",
     "/img/CantineTable.jpeg",
     "/img/Entre.jpg",
-    "/img/salade_img.jpg",
+    "/img/Cuisine.png",
 ];
 
 function Slider(id) {
     const slider = document.getElementById(id);
-
     const fullList = images.concat(images);
-
     fullList.forEach(src => {
         const img = document.createElement("img");
         img.src = src;

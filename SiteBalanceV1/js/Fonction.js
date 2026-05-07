@@ -1,10 +1,10 @@
 // js/bddFunctions.js
-const mariadb = require('mariadb');
-const bcrypt = require('bcrypt');
-const fs = require('fs');
-const express = require('express');
+import * as mariadb from 'mariadb';
+import bcrypt from 'bcrypt';
+import fs from 'fs';
+import express from 'express';
 const router = express.Router();
-const logger = require('./logger.js');
+import logger from './logger.js';
 
 
 const pool = mariadb.createPool({
@@ -126,7 +126,7 @@ async function CheckIpBan(ip) {
         }
         const heure_ban = rows[0].Date_Ban;
         const TempBanni = new Date() - new Date(heure_ban);
-        const Variable1Heure = 5000* 1000 ;
+        const Variable1Heure = 1000 ;
 
         if (TempBanni > Variable1Heure) {
             await UnBanIp(ip);
@@ -164,7 +164,7 @@ async function UnBanIp(ip) {
 
 
 //Liste des fonctions importable dans d'autre fichier.
-module.exports = {
+export {
     ReadDataMariaDB,
     WriteDataDonneeCollecte,
     WriteUtilisateur,
@@ -174,3 +174,5 @@ module.exports = {
     UnBanIp,
     pool,
 };
+
+export default router;

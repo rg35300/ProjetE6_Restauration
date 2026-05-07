@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const json2csv = require('json2csv');
-const logger = require('./logger.js');
+import json2csv from 'json2csv';
+import logger from './logger.js';
 
 function isAuthenticated(req, res, next) {
     if (req.session.logged) {
@@ -29,8 +29,6 @@ function DroitAcces(rolesAutorises) {
     };
     }
 }
-
-
 
 router.post('/AddDataDonneeCollecte', isAuthenticated, async (req, res)=>{
     const { weight, choice ,balance}=req.body;
@@ -129,4 +127,4 @@ router.get('/ExportCSV', isAuthenticated, async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

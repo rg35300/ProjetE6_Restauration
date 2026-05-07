@@ -158,6 +158,42 @@
 <script>
 let menusData = {};
 
+async function envoyerPlats() {
+
+    const jours = ["Lundi", "Mardi", "Jeudi", "Vendredi"];
+    const types = ["Entree", "Plat", "Dessert"];
+    const data = [];
+
+    types.forEach(type => {
+        jours.forEach(jour => {
+
+            const nom = document.getElementById(`${type}${jour}`).value;
+            const masse = document.getElementById(`${type}Organique${jour}`).value;
+
+            if (nom) {
+                data.push({
+                    NomPlat: nom,
+                    TypePlat: type.toLowerCase(),
+                    MassePlat: parseFloat(masse) || 0,
+                    Jour: jour
+                });
+            }
+        });
+    });
+
+    const response = await fetch("/EnvoyerMenu", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    console.log(result);
+    alert(result.message);
+}
+
 async function loadSuggestions() {
     try {
         const response = await fetch('/GetMenu');

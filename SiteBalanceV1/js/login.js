@@ -1,13 +1,15 @@
-const express = require('express');
+import express from 'express';
+import bcrypt from 'bcrypt';
+import logger from './logger.js';
+
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const logger = require('./logger.js');
 
 // Stockage en mémoire des tentatives de connexion par IP
 const loginAttempts = new Map();
 
 const MAX_ATTEMPTS = 5;// Nombre max de tentatives autorisées
 const BLOCK_TIME = 60 * 1000;// Bloqué 5 minutes
+
 
 function getIp(req) {//Récupère l'IP
     return (req.headers['x-forwarded-for'] || req.socket.remoteAddress)
@@ -143,4 +145,5 @@ router.post('/NewUtilisateur', async (req, res) => {
     }
 });
 
-module.exports = router;
+
+export default router;

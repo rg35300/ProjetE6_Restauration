@@ -1,4 +1,4 @@
-const winston = require('winston');
+import winston from 'winston';
 
 const levelCodes = {
   error: 501,
@@ -18,7 +18,7 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     
-     winston.format((info) => {
+    winston.format((info) => {
       info.code = levelCodes[info.level] ?? 0;
       return info;
     })(),
@@ -26,8 +26,8 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console(),//Affichage Console
-    new winston.transports.File({ filename: 'logs/historique.log' }),//Affichage fichier
+    new winston.transports.File({ filename: 'logs/historique.log' }),//Insertion fichier log
   ],
 });
 
-module.exports = logger;
+export default logger;

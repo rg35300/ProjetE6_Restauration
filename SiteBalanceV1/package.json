@@ -2,6 +2,7 @@
   "name": "sitebalancev1",
   "version": "1.0.0",
   "main": "js/serverV2.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node js/serverV2.js",

@@ -1,11 +1,28 @@
-const express = require('express');
-const router = express.Router();
-const { join } = require('path');
+import express from 'express';
+import { join } from 'path';
 
-const menuRoutes = require('./menu');
-const loginRoutes = require('./login');
-const graphicRoutes = require('./graphic');
-const BDDRoutes = require('./BDD');
+import menuRoutes from './menu.js';
+import loginRoutes from './login.js';
+import graphicRoutes from './graphic.js';
+import BDDRoutes from './BDD.js';
+
+import rateLimit from 'express-rate-limit';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+const router = express.Router();
+
+//Limiter global pour éviter spam refresh / navigation
+const pageLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute
+    max: 120, // navigation normale + assets
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
 
 //Fonction vérifiant si l'utilisateur est bien log
 function isAuthenticated(req, res, next) {
@@ -15,6 +32,7 @@ function isAuthenticated(req, res, next) {
         res.redirect('/');
     }
 }
+
 //Fonction vérifiant si le role de l'utilisateur connecté est bien inclu dans la liste
 function DroitAcces(rolesAutorises) {
     return (req, res, next) => {
@@ -33,23 +51,21 @@ function DroitAcces(rolesAutorises) {
                 window.history.back();
             </script>
         `);
+        }
     };
-    }
 }
 
 
-
-
-//Routage entre les pages de logins et la déconnection
-router.get('/', (req,res) =>{
-	res.sendFile(join(__dirname, '../views','Login.html'));
+//Routage login
+router.get('/', pageLimiter, (req,res) =>{
+    res.sendFile(join(__dirname, '../views','Login.html'));
 })
 
-router.get('/Register',(req, res) => {
+router.get('/Register', pageLimiter, (req, res) => {
     res.sendFile(join(__dirname, '../views', 'Register.html'));
 });
 
-router.post('/Logout', (req, res) => {
+router.post('/Logout', pageLimiter, (req, res) => {
     req.session.destroy(err => {
         if (err) {
             return res.status(500).send("Erreur de déconnexion");
@@ -58,42 +74,45 @@ router.post('/Logout', (req, res) => {
     });
 });
 
-//Routage entre les pages
 
-router.get('/Home', isAuthenticated, DroitAcces(['webadmin','AdminBDD','AgentDeRestauration','ResponsableSelf']), (req, res) => {
+//Pages protégées
+router.get('/Home', pageLimiter, isAuthenticated, DroitAcces(['webadmin','AdminBDD','AgentDeRestauration','ResponsableSelf']), (req, res) => {
     res.sendFile(join(__dirname, '../views', 'Home.html'));
 });
 
-router.get('/Graphique', isAuthenticated, DroitAcces(['webadmin','ResponsableSelf']), (req, res) => {
+router.get('/Graphique', pageLimiter, isAuthenticated, DroitAcces(['webadmin','ResponsableSelf']), (req, res) => {
     res.sendFile(join(__dirname, '../views', 'Graphique.html'));
 });
 
-router.get('/BDD', isAuthenticated, DroitAcces(['webadmin','AdminBDD']), (req, res) => {
+router.get('/BDD', pageLimiter, isAuthenticated, DroitAcces(['webadmin','AdminBDD']), (req, res) => {
     res.sendFile(join(__dirname, '../views', 'BDD.html'));
 });
 
-router.get('/Dechet', isAuthenticated, DroitAcces(['webadmin','ResponsableSelf','AgentDeRestauration']), (req, res) => {
+router.get('/Dechet', pageLimiter, isAuthenticated, DroitAcces(['webadmin','ResponsableSelf','AgentDeRestauration']), (req, res) => {
     res.sendFile(join(__dirname, '../views', 'Dechet.html'));
 });
 
-router.get('/Menu', isAuthenticated, DroitAcces(['webadmin','ResponsableSelf']), (req, res) => {
+router.get('/Menu', pageLimiter, isAuthenticated, DroitAcces(['webadmin','ResponsableSelf']), (req, res) => {
     res.sendFile(join(__dirname, '../views', 'Menu.html'));
 });
 
+
+//API routes (pas forcément besoin de limiter fort ici)
 router.use(menuRoutes);
 router.use(loginRoutes);
 router.use(graphicRoutes);
 router.use(BDDRoutes);
 
-// 404
-router.use((req,res,next)=>{
-    const error = new Error("Page non trouvée")
-    error.status=404;
-    res.status(404).sendFile(join(__dirname, '../views','Erreur404.html'));
-})
 
-module.exports = [
+//404
+router.use((req,res,next)=>{
+    res.status(404).sendFile(join(__dirname, '../views','Erreur404.html'));
+});
+
+export {
     router,
     isAuthenticated,
     DroitAcces
-];
+};
+
+export default router;

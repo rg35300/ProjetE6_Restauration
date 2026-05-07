@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import logger from './logger.js';
+
 const router = express.Router();
-const logger = require('./logger.js');
 
 function isAuthenticated(req, res, next) {
     if (req.session.logged) {
@@ -10,8 +11,10 @@ function isAuthenticated(req, res, next) {
     }
 }
 
+import { join } from 'path';
+
 router.get('/Graphique', isAuthenticated, (req, res) => {
-    res.sendFile(require('path').join(__dirname, '../views', 'Graphique.html'));
+    res.sendFile(join(process.cwd(), '../views', 'Graphique.html'));
 });
 
 router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
@@ -26,7 +29,7 @@ router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
         let fin = date_fin && date_fin.trim() !== "" ? date_fin : null;
 
         let query = `
-            SELECT DATE(DateDeCollecte) as DateDeCollecte, SUM(Valeur) as Valeur
+            SELECT DATE(DateDeCollecte) as DateDeCollecte, AVG(Valeur) as Valeur
             FROM DonneeCollecte
         `;
 
@@ -80,4 +83,4 @@ router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

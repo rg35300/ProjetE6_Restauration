@@ -1,19 +1,22 @@
-const logger = require('./logger.js');
-const express = require('express');
+import logger from './logger.js';
+import express from 'express';
 const serveur = express();
-const morgan = require('morgan');
-const fs = require('fs');
-const https = require('https');
-const session = require('express-session');
-const { join } = require('path');
-const { exec } = require('child_process');
-const mariadb = require('mariadb');
-const rateLimit = require('express-rate-limit');
-const { AddIpBan, CheckIpBan} = require('./Fonction.js');
-const path = require('path');
 
-serveur.use('/img', express.static(path.join(__dirname, '../img')));
+import morgan from 'morgan';
+import fs from 'fs';
+import https from 'https';
+import session from 'express-session';
+import { exec } from 'child_process';
+import * as mariadb from 'mariadb';
+import rateLimit from 'express-rate-limit';
 
+import { AddIpBan, CheckIpBan } from './Fonction.js';
+
+import path from 'path'; // ajout pour les chemins
+import { fileURLToPath } from 'url'; // ajout pour ES modules
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url)); // remplacement de __dirname en ES modules
+serveur.use('/img', express.static(path.join(__dirname, '../img')));//Permet d'aller importer les images
 
 
 //Utilisation du package.json pour démarer le serveur
@@ -29,7 +32,7 @@ serveur.use(morgan((tokens, req, res) => {
         logger.info(logMessage);
     }
 
-    return null; // empêche Morgan d'écrire dans la console
+    return null;
 }));
 
 serveur.use(express.urlencoded({ extended: true }));
@@ -52,27 +55,38 @@ const IpBan = async (req, res, next) => {
         next();
     }
 };
+
 serveur.use(IpBan);
 
-//Mise en place d'un rate limiter pour empêcher le DDOS appelant la fonction AddIpBan sinon
-const testLimiter = rateLimit({
-    windowMs: 1000,
-    max: 5,
+
+//Rate limiter global propre
+const publicLimiter = rateLimit({
+    windowMs: 10 * 1000, //Fenêtre courte pour navigation normale
+    max: 100, // Permet navigation + images sans ban
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
+serveur.use(publicLimiter); // Appliqué globalement proprement
+
+
+const strictLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute
+    max: 10,
     handler: async (req, res) => {
         const ip = req.ip.replace("::ffff:", "");
         const dateBan = new Date();
         await AddIpBan(ip, dateBan);
-        
-        logger.warn('Anti-DDOS activé', {
+
+        logger.warn('Anti brute-force activé', {
             ip,
             route: req.originalUrl,
             bannedAt: dateBan.toISOString(),
-            userAgent: req.get('User-Agent'),
         });
+
+        return res.status(429).send("Trop de requêtes");
     }
 });
-
-serveur.use('/', testLimiter);
 
 
 //Création d'une session d'authentification
@@ -83,28 +97,27 @@ serveur.use(session({
     cookie: {
         secure: true,
         httpsOnly: true,
-        maxAge : 3600 * 1000
+        maxAge: 3600 * 1000
     }
 }));
 
+
 //Utilisation des fichiers exterieurs
-const routes = require('./routes');
-serveur.use('/', routes);
-const BDD = require('./BDD');
-serveur.use('/', BDD);
-const graphic = require('./graphic');
-serveur.use('/',graphic);
-const login=require('./login');
-serveur.use('/',login);
+import routes from './routes.js';
+import BDD from './BDD.js';
+import graphic from './graphic.js';
+import login from './login.js';
+
+// Ajout des routes (important sinon / ne marche pas)
+serveur.use('/', routes); // activation du router principal
 
 
 //Utilisaion du certificat avec clé
 const options = {
-  key: fs.readFileSync('./Cert/CleRestauration.pem'),
-  cert: fs.readFileSync('./Cert/CertificatRestauration.pem'),
+  key: fs.readFileSync(path.join(__dirname, '../Cert/CleRestauration.pem')),
+  cert: fs.readFileSync(path.join(__dirname, '../Cert/CertificatRestauration.pem')),
   passphrase: 'mvF1NxKJZ1'
 };
-
 
 
 //Connection à la BDD contenu dans le serveur
@@ -117,49 +130,51 @@ const pool = mariadb.createPool({
 });
 
 serveur.locals.pool = pool;
+
+
 //Fonction permettant de tuer un processus avec son pid en argument
 function KillProcess(pid){
-  return new Promise((resolve) => {
-    exec(`kill ${pid}`, (err) => {
-      if(err) {
-        logger.error(`Echec du kill du process ${pid}: ${err.message}`);
-      } else {
-        const cleanPid = pid.toString().trim();
-        logger.info(`Process ${cleanPid} tué`);
-      }
-      resolve();//Permet de continuer dans le cas où le port 3000 est libre.
+    return new Promise((resolve) => {
+        exec(`kill ${pid}`, (err) => {
+            if(err) {
+                logger.error(`Echec du kill du process ${pid}: ${err.message}`);
+            } else {
+                const cleanPid = pid.toString().trim();
+                logger.info(`Process ${cleanPid} tué`);
+            }
+            resolve();
+        });
     });
-  });
 }
+
 
 //Fonction permettant de tuer un processus en entrant son port
 function FreePort(port){
-  return new Promise((resolve) => {
-    exec(`lsof -ti tcp:${port} -sTCP:LISTEN -n -P`, async (err, stdout) => {
-      const cleanStdout = stdout?.trim();
-      if(cleanStdout){
-        const pid = cleanStdout;
-        logger.info(`Process sur le port ${port}: ${pid}`);
-        await KillProcess(pid);
-        resolve();
-      } else {
-        logger.info(`Port ${port} déjà libre.`);
-        resolve();
-      }
+    return new Promise((resolve) => {
+        exec(`lsof -ti tcp:${port} -sTCP:LISTEN -n -P`, async (err, stdout) => {
+            const cleanStdout = stdout?.trim();
+            if(cleanStdout){
+                const pid = cleanStdout;
+                logger.info(`Process sur le port ${port}: ${pid}`);
+                await KillProcess(pid);
+                resolve();
+            } else {
+                logger.info(`Port ${port} déjà libre.`);
+                resolve();
+            }
+        });
     });
-  });
 }
+
 
 //Fonction asynchrone permettant de lancer le serveur
 //+ Vérification de la disponibilité du port 3000
 async function StartServer(){
     try{
-        await(FreePort(3000));
-        {
+        await FreePort(3000);
         https.createServer(options, serveur).listen(3000, () => {
-        logger.info('Serveur lancé en HTTPS sur le port 3000');
+            logger.info('Serveur lancé en HTTPS sur le port 3000');
         });
-    }
     }
     catch (error){
         console.error('Erreur au démarage', error);
@@ -168,4 +183,3 @@ async function StartServer(){
 }
 
 StartServer();
-
