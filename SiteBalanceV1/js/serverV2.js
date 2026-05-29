@@ -2,6 +2,8 @@ import logger from './logger.js';
 import express from 'express';
 const serveur = express();
 
+serveur.set('trust proxy', 1);
+
 import morgan from 'morgan';
 import fs from 'fs';
 import https from 'https';
@@ -41,8 +43,10 @@ serveur.use(express.json());
 //Listage des addresse IP Bans et appelle de la fonction vérifiant les ip bannis
 const IpBan = async (req, res, next) => {
     const ip = req.ip.replace("::ffff:", "");
+
     try {
         const banned = await CheckIpBan(ip);
+
         if (banned) {
             logger.warn(`Tentative d'accès bannie depuis IP : ${ip}`);
             return res.status(403).send("Tentative de DDOS, Banni");
@@ -50,7 +54,9 @@ const IpBan = async (req, res, next) => {
 
         logger.info(`IP autorisée : ${ip}`);
         next();
+
     } catch (err) {
+
         logger.error(`Erreur lors de la vérification de l'IP ${ip} : ${err.message}`);
         next();
     }
@@ -70,12 +76,18 @@ const publicLimiter = rateLimit({
 serveur.use(publicLimiter); // Appliqué globalement proprement
 
 
+//Rate limiter strict pour test
 const strictLimiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
-    max: 10,
+    max: 100,
+    standardHeaders: true,
+    legacyHeaders: false,
+
     handler: async (req, res) => {
+
         const ip = req.ip.replace("::ffff:", "");
         const dateBan = new Date();
+
         await AddIpBan(ip, dateBan);
 
         logger.warn('Anti brute-force activé', {
@@ -88,16 +100,21 @@ const strictLimiter = rateLimit({
     }
 });
 
+//Activation globale du strictLimiter pour test
+serveur.use(strictLimiter);
+
 
 //Création d'une session d'authentification
 serveur.use(session({
-    secret: 'my-secret-key',
+    secret: 'VmDE9XFzHueA1fbbfsAI0eTkrtaeB1GEk91GQ2Uw2NyAha2T6TfXVZSaKp5SQUcz73w1Oz40Yg9IucQvhxlMKn',
     resave: false,
     saveUninitialized: false,
+
     cookie: {
         secure: true,
-        httpsOnly: true,
-        maxAge: 3600 * 1000
+        httpOnly: true,
+        maxAge: 3600 * 1000,
+        sameSite: "strict"
     }
 }));
 
@@ -107,16 +124,17 @@ import routes from './routes.js';
 import BDD from './BDD.js';
 import graphic from './graphic.js';
 import login from './login.js';
+import strict from 'assert/strict';
 
 // Ajout des routes (important sinon / ne marche pas)
 serveur.use('/', routes); // activation du router principal
-
+serveur.use('/', BDD);
 
 //Utilisaion du certificat avec clé
 const options = {
-  key: fs.readFileSync(path.join(__dirname, '../Cert/CleRestauration.pem')),
-  cert: fs.readFileSync(path.join(__dirname, '../Cert/CertificatRestauration.pem')),
-  passphrase: 'mvF1NxKJZ1'
+    key: fs.readFileSync(path.join(__dirname, '../Cert/CleRestauration.pem')),
+    cert: fs.readFileSync(path.join(__dirname, '../Cert/CertificatRestauration.pem')),
+    passphrase: 'mvF1NxKJZ1'
 };
 
 
@@ -168,18 +186,19 @@ function FreePort(port){
 
 
 //Fonction asynchrone permettant de lancer le serveur
-//+ Vérification de la disponibilité du port 3000
+//Vérification de la disponibilité du port 3000
 async function StartServer(){
     try{
         await FreePort(3000);
         https.createServer(options, serveur).listen(3000, () => {
-            logger.info('Serveur lancé en HTTPS sur le port 3000');
+            logger.info('Serveur lancé en HTTPS sur le port 3000 via PM2');
         });
+
     }
     catch (error){
+
         console.error('Erreur au démarage', error);
         logger.error('Echec au lancement du serveur');
     }
 }
-
 StartServer();

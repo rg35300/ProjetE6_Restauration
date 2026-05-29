@@ -1,15 +1,10 @@
 import express from 'express';
 import logger from './logger.js';
+import { DroitAcces, isAuthenticated } from './routes.js';
 
 const router = express.Router();
 
-function isAuthenticated(req, res, next) {
-    if (req.session.logged) {
-        next();
-    } else {
-        res.redirect('/');
-    }
-}
+
 
 import { join } from 'path';
 
@@ -17,7 +12,7 @@ router.get('/Graphique', isAuthenticated, (req, res) => {
     res.sendFile(join(process.cwd(), '../views', 'Graphique.html'));
 });
 
-router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
+router.get('/API/Data_BDD', isAuthenticated, DroitAcces(['webadmin']),async (req, res) => {
     let connection;
     const pool = req.app.locals.pool;
     try {
@@ -29,7 +24,7 @@ router.get('/API/Data_BDD', isAuthenticated, async (req, res) => {
         let fin = date_fin && date_fin.trim() !== "" ? date_fin : null;
 
         let query = `
-            SELECT DATE(DateDeCollecte) as DateDeCollecte, AVG(Valeur) as Valeur
+            SELECT DATE(DateDeCollecte) as DateDeCollecte, SUM(Valeur) as Valeur
             FROM DonneeCollecte
         `;
 

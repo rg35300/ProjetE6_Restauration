@@ -2,33 +2,7 @@ import express from 'express';
 const router = express.Router();
 import json2csv from 'json2csv';
 import logger from './logger.js';
-
-function isAuthenticated(req, res, next) {
-    if (req.session.logged) {
-        next();
-    } else {
-        res.redirect('/');
-    }
-}
-
-function DroitAcces(rolesAutorises) {
-    return (req, res, next) => {
-        if (!req.session.user) {
-            return res.redirect('/');
-        }
-        const userRole = req.session.user.role;
-        if (rolesAutorises.includes(userRole)) {
-            next();
-        } else {
-            res.status(403).send(`
-            <script>
-                alert("Vous n'avez pas les droits pour accéder à cette page !");
-                window.history.back();
-            </script>
-        `);
-    };
-    }
-}
+import { DroitAcces, isAuthenticated } from './routes.js';
 
 router.post('/AddDataDonneeCollecte', isAuthenticated, async (req, res)=>{
     const { weight, choice ,balance}=req.body;

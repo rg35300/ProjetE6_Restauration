@@ -15,11 +15,11 @@
     <div class="text-center mb-4">
         <h1>Menu de la semaine</h1>
 
-        <div class="d-flex justify-content-center gap-3 mt-3">
-            <a href="/Home" class="btn btn-outline-primary btn-sm">Home</a>
-            <a href="/BDD" class="btn btn-outline-primary btn-sm">BDD</a>
-            <a href="/Dechet" class="btn btn-outline-primary btn-sm">Ajout de déchet</a>
-            <a href="/Graphique" class="btn btn-outline-primary btn-sm">Graphique</a>
+        <div class="bg-primary p-2 rounded mt-3 d-inline-flex justify-content-center gap-3 flex-wrap">
+            <a href="/Home" class="text-white text-decoration-none">Home</a>
+            <a href="/BDD" class="text-white text-decoration-none">BDD</a>
+            <a href="/Dechet" class="text-white text-decoration-none">Ajout de déchet</a>
+            <a href="/Graphique" class="text-white text-decoration-none">Graphique</a>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-hover text-center align-middle">
+            <table class="table table-bordered border-primary border-10">
 
                 <thead class="table-basic">
                 <tr>
@@ -237,10 +237,10 @@ function calculTotalAuto() {
 
     const totalFinal = (totalEntree + totalPlat + totalDessert) * nbrMenu;
 
-    document.getElementById("resultatentre").innerText = `Total des déchets Entrées : ${(totalEntree * nbrMenu).toFixed(2)} g`;
-    document.getElementById("resultatplat").innerText = `Total des déchets Plats : ${(totalPlat * nbrMenu).toFixed(2)} g`;
-    document.getElementById("resultdessert").innerText = `Total des déchets Desserts : ${(totalDessert * nbrMenu).toFixed(2)} g`;
-    document.getElementById("resultat").innerText = `Total général des déchets : ${totalFinal.toFixed(2)} g`;
+    document.getElementById("resultatentre").innerText = `Total des déchets Entrées : ${(totalEntree * nbrMenu / 1000).toFixed(2)} kg`;
+    document.getElementById("resultatplat").innerText = `Total des déchets Plats : ${(totalPlat * nbrMenu / 1000).toFixed(2)} kg`;
+    document.getElementById("resultdessert").innerText = `Total des déchets Desserts : ${(totalDessert * nbrMenu / 1000).toFixed(2)} kg`;
+    document.getElementById("resultat").innerText = `Total général des déchets : ${(totalFinal / 1000).toFixed(2)} kg`;
 }
 
 function autoFillPoids(type, jour) {

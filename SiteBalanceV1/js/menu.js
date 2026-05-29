@@ -1,19 +1,11 @@
 import express from 'express';
 import logger from './logger.js';
 import * as mariadb from 'mariadb';
-
+import { DroitAcces, isAuthenticated } from './routes.js';
 const router = express.Router();
 
-// Vérif login
-function isAuthenticated(req, res, next) {
-    if (req.session.logged) {
-        next();
-    } else {
-        res.redirect('/');
-    }
-}
 
-// Pool
+// Pool de connexion
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'admin',
@@ -22,7 +14,7 @@ const pool = mariadb.createPool({
     port: 3306,
 });
 
-// Ajout / update menu
+// Ajout / Update repas inséré dans le menu
 async function AjoutDeMenu(type, nom, masse, jour) {
     let connection;
     logger.info("Connexion à la BDD");
@@ -30,7 +22,7 @@ async function AjoutDeMenu(type, nom, masse, jour) {
     try {
         connection = await pool.getConnection();
 
-        // sécurisation minimale
+        //Vérification que le repas a bien toutes les données avant d'être inséré à la bdd
         type = type?.trim();
         nom = nom?.trim();
         jour = jour?.trim();
@@ -62,7 +54,7 @@ async function AjoutDeMenu(type, nom, masse, jour) {
         if (connection) connection.release();
     }
 }
-
+// Route d’envoi et d’insertion des menus
 router.post('/EnvoyerMenu', isAuthenticated, async (req, res) => {
     const data = req.body;
     logger.info("Requête /EnvoyerMenu reçue");
@@ -86,7 +78,8 @@ router.post('/EnvoyerMenu', isAuthenticated, async (req, res) => {
     }
 });
 
-router.get('/GetMenu', isAuthenticated, async (req, res) => {
+// Route de récupération des menus enregistrés
+router.get('/GetMenu', isAuthenticated, DroitAcces(['webadmin']),async (req, res) => {
     let connection;
 
     try {
@@ -119,7 +112,8 @@ router.get('/GetMenu', isAuthenticated, async (req, res) => {
 });
 
 
-router.get('/AffichageMenu', isAuthenticated,async (req, res) => {
+// Route de récupération des menus enregistrés
+router.get('/AffichageMenu', isAuthenticated, DroitAcces(['webadmin']),async (req, res) => {
     let connection;
 
     try {

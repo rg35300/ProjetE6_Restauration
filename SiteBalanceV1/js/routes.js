@@ -76,7 +76,7 @@ router.post('/Logout', pageLimiter, (req, res) => {
 
 
 //Pages protégées
-router.get('/Home', pageLimiter, isAuthenticated, DroitAcces(['webadmin','AdminBDD','AgentDeRestauration','ResponsableSelf']), (req, res) => {
+router.get('/Home', pageLimiter, isAuthenticated, DroitAcces(['webadmin','AdminBDD','AgentDeRestauration','ResponsableSelf']),(req, res) => {
     res.sendFile(join(__dirname, '../views', 'Home.html'));
 });
 
@@ -105,8 +105,13 @@ router.use(BDDRoutes);
 
 
 //404
-router.use((req,res,next)=>{
-    res.status(404).sendFile(join(__dirname, '../views','Erreur404.html'));
+router.use((req, res) => {
+
+    if (!req.session?.logged) {
+        return res.redirect('/');
+    }
+
+    return res.status(404).sendFile(join(__dirname, '../views', 'Erreur404.html'));
 });
 
 export {

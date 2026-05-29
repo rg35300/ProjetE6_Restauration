@@ -15,7 +15,7 @@
         <div class="col-12 col-md-6 col-lg-5 text-center">
     <h1>Ajout de déchet</h1>
             <div class="mb-3">
-                <div class="bg-info p-2 rounded text-center mt-3 d-flex justify-content-center gap-3">
+                <div class="bg-primary p-2 rounded mt-3 d-inline-flex justify-content-center gap-3 flex-wrap">
                     <a href="/Home" class="text-white text-decoration-none">Home</a>
                     <a href="/Graphique" class="text-white text-decoration-none">Graphiques</a>
                     <a href="/BDD" class="text-white text-decoration-none">BDD</a>
@@ -29,6 +29,9 @@
                         id="weight"
                         class="form-control"
                         placeholder="Poids (kg)" 
+                        min="0.1"
+                        max="100"
+                        step="0.1"
                         required
                     >
                 </div>
@@ -44,10 +47,13 @@
                     <input type="radio" name="balance" value="2"> 2
                 </div>
 
-                <button type="submit" class="btn btn-warning text-white w-100">
+                <button type="submit" class="btn btn-success text-white w-100">
                     Ajouter
                 </button>
             </form>
+            <button id="exportCsvBtn" class="btn btn-warning w-60 mt-3">
+                Export CSV
+            </button>
 
         </div>
     </div>
@@ -55,9 +61,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-document.getElementById("exportCsvBtn").addEventListener("click", () => {
-    window.location.href = '/ExportCSV';
-});
+
+const exportBtn = document.getElementById("exportCsvBtn");
+
+if (exportBtn) {
+    exportBtn.addEventListener("click", () => {
+        window.location.href = '/ExportCSV';
+    });
+
+}
+
 
 document.getElementById('formDechet').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -66,24 +79,39 @@ document.getElementById('formDechet').addEventListener('submit', async (e) => {
     const choice = document.getElementById('choice').value;
     const balance = document.querySelector('input[name="balance"]:checked').value;
 
-    const response = await fetch('/AddDataDonneeCollecte', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ weight, choice,balance })
-    });
-
-    if (response.ok) {
-        alert(`${weight}kg de déchet ${choice} de la balance n°${balance} ajouté !`);
-        document.getElementById('weight').value = 0;
-    } else {
-        alert('Erreur lors de l’ajout.');
+    try {
+        const response = await fetch('/AddDataDonneeCollecte', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                weight,
+                choice,
+                balance
+            })
+        });
+        if (response.ok) {
+            alert(`${weight}kg de déchet ${choice} ajouté`);
+            document.getElementById('weight').value = '';
+        } else {
+            alert('Erreur ajout');
+        }
+    } catch (err) {
+        console.error(err);
     }
 });
 
-document.getElementById('formLogout').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    await fetch('/Logout', { method: 'POST' });
-    window.location.href = '/';
-});
+
+const logoutForm = document.getElementById('formLogout');
+if (logoutForm) {
+    logoutForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await fetch('/Logout', {
+            method: 'POST'
+        });
+        window.location.href = '/';
+    });
+}
 </script>
 </html>

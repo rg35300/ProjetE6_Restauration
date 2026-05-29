@@ -126,7 +126,7 @@ async function CheckIpBan(ip) {
         }
         const heure_ban = rows[0].Date_Ban;
         const TempBanni = new Date() - new Date(heure_ban);
-        const Variable1Heure = 1000 ;
+        const Variable1Heure = 3600 * 1000 ;
 
         if (TempBanni > Variable1Heure) {
             await UnBanIp(ip);
