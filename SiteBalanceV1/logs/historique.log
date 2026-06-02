@@ -4053,3 +4053,9 @@
 {"code":400,"level":"warn","message":"POST /Logout 302 5.916 ms","timestamp":"2026-06-02 14:29:49"}
 {"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-06-02 14:29:49"}
 {"code":200,"level":"info","message":"GET / 200 4.423 ms","timestamp":"2026-06-02 14:29:49"}
+{"code":200,"level":"info","message":"Port 3000 déjà libre.","timestamp":"2026-06-02 15:04:09"}
+{"code":200,"level":"info","message":"Serveur lancé en HTTPS sur le port 3000 via PM2","timestamp":"2026-06-02 15:04:09"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-06-02 15:04:11"}
+{"code":400,"level":"warn","message":"GET / 304 17.366 ms","timestamp":"2026-06-02 15:04:11"}
+{"code":200,"level":"info","message":"IP autorisée : 10.160.112.6","timestamp":"2026-06-02 15:04:12"}
+{"code":400,"level":"warn","message":"GET /Register 304 7.240 ms","timestamp":"2026-06-02 15:04:12"}
