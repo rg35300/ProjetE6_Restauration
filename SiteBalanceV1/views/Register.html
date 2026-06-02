@@ -14,11 +14,14 @@
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
         
         <div class="col-12 col-md-6 col-lg-5">
+
             <div class="text-center mb-4">
                 <h1>Nouveau Compte</h1>
                 <a href="/" class="text-decoration-none">Page Log In</a>
             </div>
+
             <div class="card shadow-sm p-4">
+
                 <form method="POST" action="/NewUtilisateur">
                     <div class="mb-3">
                         <input type="text" name="Nom" class="form-control" placeholder="Nom" required>
@@ -27,20 +30,87 @@
                         <input type="text" name="Prenom" class="form-control" placeholder="Prénom" required>
                     </div>
                     <div class="mb-3">
-                        <input type="email" name="Email" class="form-control" placeholder="Email" required>
+                        <input type="email" id="email" name="Email" class="form-control" placeholder="Email" required>
+                        <small id="emailError" class="text-danger"></small>
                     </div>
                     <div class="mb-3">
-                        <input type="password" name="MotDePasse" class="form-control" placeholder="Mot de passe" required>
+                        <input type="password" id="password" name="MotDePasse" class="form-control" placeholder="Mot de passe" required>
+                        <small id="passwordError" class="text-danger"></small>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">
+                    <div class="mb-3 mt-3">
+                        <div class="cf-turnstile"
+                            data-sitekey="0x4AAAAAADYVbo6JimBI1_9L">
+                        </div>
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn btn-secondary w-100" disabled>
                         Créer le compte
                     </button>
+
                 </form>
+
             </div>
         </div>
     </div>
 </div>
 
+<script>
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const submitBtn = document.getElementById("submitBtn");
+
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
+
+function validateEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function checkForm() {
+    const emailValid = validateEmail(email.value);
+    const passwordValid = password.value.length >= 8;
+
+    if (!email.value) {
+        emailError.textContent = "";
+    } else if (!emailValid) {
+        emailError.textContent = "Email invalide";
+    } else {
+        emailError.textContent = "";
+    }
+
+    if (!password.value) {
+        passwordError.textContent = "";
+    } else if (!passwordValid) {
+        passwordError.textContent = "Minimum 8 caractères";
+    } else {
+        passwordError.textContent = "";
+    }
+
+    if (emailValid && passwordValid) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("btn-secondary");
+        submitBtn.classList.add("btn-primary");
+    } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.remove("btn-primary");
+        submitBtn.classList.add("btn-secondary");
+    }
+}
+
+email.addEventListener("input", checkForm);
+password.addEventListener("input", checkForm);
+
+checkForm();
+
+const params = new URLSearchParams(window.location.search);
+
+//Si erreur doublon de mail alors on affiche texte
+if (params.get("error") === "email_exists") {
+    emailError.textContent = "Cet email est déjà utilisé";
+}
+</script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

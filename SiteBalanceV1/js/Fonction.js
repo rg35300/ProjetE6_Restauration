@@ -5,6 +5,7 @@ import fs from 'fs';
 import express from 'express';
 const router = express.Router();
 import logger from './logger.js';
+import validator from 'validator';
 
 
 const pool = mariadb.createPool({
@@ -75,25 +76,35 @@ async function WriteUtilisateur(nom, prenom, email, role, mdp) {
 }
 
 // Ajouter un utilisateur avec mot de passe hashé
-async function NewUtilisateur(nom, prenom, email, mdp) {
-    const saltRounds = 10;
-    const hashMdp = await bcrypt.hash(mdp, saltRounds);
-    console.log("Mot de passe hashé", hashMdp);
+async function NewUtilisateur(nom, prenom, email, mdp, role) {
+        let connection;
 
-    let connection;
-    try {
-        connection = await pool.getConnection();
-        await connection.query(
-            `INSERT INTO Utilisateur (Nom, Prenom, Email, Role, MotDePasse) VALUES (?, ?, ?, ?, ?)`,
-            [nom, prenom, email, 'AgentDeRestauration', hashMdp]
-        );
-        console.log('Utilisateur inséré avec hash');
-    } catch (err) {
-        console.error('Erreur NewUtilisateur:', err);
-        throw err;
-    } finally {
-        if (connection) connection.release();
-    }
+        try {
+            const saltRounds = 10;
+            const hashMdp = await bcrypt.hash(mdp, saltRounds);
+            connection = await pool.getConnection();
+
+            await connection.query(
+                `INSERT INTO Utilisateur (Nom, Prenom, Email, Role, MotDePasse)
+                 VALUES (?, ?, ?, ?, ?)`,
+                [nom, prenom, email, role, hashMdp]
+            );
+            logger.info('Utilisateur créé', { email });
+            return { success: true };
+
+        } catch (err) {
+            if (err.code === "ER_DUP_ENTRY") {
+                logger.warn('Tentative de création avec email existant', { email });
+                return { error: "EMAIL_EXISTS" };
+            }
+            logger.error('Erreur création utilisateur', {
+                message: err.message,
+                stack: err.stack
+            });
+            throw err;
+        } finally {
+            if (connection) connection.release();
+        }
 }
 
 //Fonction permettant l'insertion d'une Ip dans une ban list
@@ -126,7 +137,7 @@ async function CheckIpBan(ip) {
         }
         const heure_ban = rows[0].Date_Ban;
         const TempBanni = new Date() - new Date(heure_ban);
-        const Variable1Heure = 3600 * 1000 ;
+        const Variable1Heure = 1000 ;
 
         if (TempBanni > Variable1Heure) {
             await UnBanIp(ip);

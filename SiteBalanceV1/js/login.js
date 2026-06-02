@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import logger from './logger.js';
 import json2csv from 'json2csv';
 import { DroitAcces, isAuthenticated } from './routes.js';
+import { NewUtilisateur } from './Fonction.js';
 
 const router = express.Router();
 
@@ -111,41 +112,51 @@ function registerFailedAttempt(ip, now) {
 }
 
 // Route de création d'utilisateur
-router.post('/NewUtilisateur', async (req, res) => {
+router.post("/NewUtilisateur", async (req, res) => {
     const { Nom, Prenom, Email, MotDePasse } = req.body;
-    const pool = req.app.locals.pool;
 
-    // Fonction de création utilisateur
-    async function NewUtilisateur(nom, prenom, email, mdp) {
-        let connection;
-        try {
-            const saltRounds = 10;
-            // Hash du mot de passe
-            const hashMdp = await bcrypt.hash(mdp, saltRounds);
-            console.log("Cryptage réussi", hashMdp);
-            connection = await pool.getConnection();
-            // Insertion en base de données
-            await connection.query(
-                `INSERT INTO Utilisateur (Nom, Prenom, Email, Role, MotDePasse)
-                VALUES (?, ?, ?, ?, ?)`,
-                [nom, prenom, email, 'AgentDeRestauration', hashMdp]
-            );
-            console.log('Data inséré');
-        } catch (err) {
-            console.error('Erreur', err);
-            throw err;
-        } finally {
-            // Libération connexion SQL
-            if (connection) connection.release();
-        }
-    }
     try {
-        await NewUtilisateur(Nom, Prenom, Email, MotDePasse);
-        res.redirect('/Home');
+        // Vérification Turnstile
+        const token = req.body["cf-turnstile-response"];
+
+        if (!token) {
+            return res.status(400).send("Captcha manquant");
+        }
+
+        const verifyResponse = await fetch(
+            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    secret: process.env.TURNSTILE_SECRET_KEY,
+                    response: token
+                })
+            }
+        );
+
+        const verifyData = await verifyResponse.json();
+
+        if (!verifyData.success) {
+            return res.status(400).send("Captcha invalide");
+        }
+
+        // Création utilisateur
+        const role = "AgentDeRestauration";
+        const result = await NewUtilisateur(Nom,Prenom,Email,MotDePasse,role);
+
+        if (result?.error === "EMAIL_EXISTS") {
+            return res.redirect("/Register?error=email_exists");
+        }
+
+        return res.redirect("/");
+
     } catch (err) {
-        res.status(500).send("Erreur lors de l'affichage de la BDD");
+        console.error(err);
+        return res.status(500).send("Erreur serveur");
     }
 });
-
 
 export default router;

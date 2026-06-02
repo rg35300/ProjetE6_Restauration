@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDD</title>
+    <title>Gestion de BDD</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
 <div class="container py-4">
 
     <div class="text-center mb-4">
-        <h1>BDD</h1>
+        <h1>Gestion de BDD</h1>
 
         <div class="bg-primary p-2 rounded mt-3 d-inline-flex justify-content-center gap-3 flex-wrap">
             <a href="/Home" class="text-white text-decoration-none">Home</a>
@@ -24,9 +24,11 @@
     </div>
 
     <div class="row g-4 justify-content-center">
+
         <div class="col-12 col-lg-6">
             <div class="card shadow-sm p-3">
                 <h5 class="text-center mb-3">Lire une table</h5>
+
                 <form method="POST" action="/ReadDataBase">
                     <div class="mb-3">
                         <label class="form-label">Base de données</label>
@@ -38,28 +40,38 @@
                             <option value="IP_BAN">Ban Liste</option>
                         </select>
                     </div>
+
                     <button type="submit" class="btn btn-success w-100">
                         Afficher
                     </button>
                 </form>
             </div>
         </div>
+
         <div class="col-12 col-lg-6">
             <div class="card shadow-sm p-3">
                 <h5 class="text-center mb-3">Ajouter un utilisateur</h5>
-                <form method="POST" action="/NewUtilisateur">
+
+                <form method="POST" action="/NewUtilisateurBDD">
+
                     <div class="mb-2">
                         <input class="form-control" name="Nom" placeholder="Nom" required>
                     </div>
+
                     <div class="mb-2">
                         <input class="form-control" name="Prenom" placeholder="Prénom" required>
                     </div>
+
                     <div class="mb-2">
-                        <input class="form-control" name="Email" placeholder="Email" required>
+                        <input class="form-control" name="Email" id="email" placeholder="Email" required>
+                        <small id="emailError" class="text-danger"></small>
                     </div>
+
                     <div class="mb-2">
-                        <input type="password" class="form-control" name="MotDePasse" placeholder="Mot de passe" required>
+                        <input type="password" class="form-control" name="MotDePasse" id="password" placeholder="Mot de passe" required>
+                        <small id="passwordError" class="text-danger"></small>
                     </div>
+
                     <div class="mb-3">
                         <select class="form-select" id="Role" name="Role" required>
                             <option value="webadmin">SuperAdmin</option>
@@ -68,7 +80,8 @@
                             <option value="AgentRestauration">Agent de restauration</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-success w-100">
+
+                    <button type="submit" id="submitBtn" class="btn btn-secondary w-100" disabled>
                         Créer
                     </button>
                 </form>
@@ -84,6 +97,64 @@
         </form>
     </div>
 </div>
+
+<script>
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const submitBtn = document.getElementById("submitBtn");
+
+const emailError = document.getElementById("emailError");
+const passwordError = document.getElementById("passwordError");
+
+function validateEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function checkForm() {
+    const emailValid = validateEmail(email.value);
+    const passwordValid = password.value.length >= 8;
+
+    if (!email.value) {
+        emailError.textContent = "";
+    } else if (!emailValid) {
+        emailError.textContent = "Email invalide";
+    } else {
+        emailError.textContent = "";
+    }
+
+    if (!password.value) {
+        passwordError.textContent = "";
+    } else if (!passwordValid) {
+        passwordError.textContent = "Minimum 8 caractères";
+    } else {
+        passwordError.textContent = "";
+    }
+
+    if (emailValid && passwordValid) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("btn-secondary");
+        submitBtn.classList.add("btn-success");
+    } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.remove("btn-success");
+        submitBtn.classList.add("btn-secondary");
+    }
+}
+
+email.addEventListener("input", checkForm);
+password.addEventListener("input", checkForm);
+
+checkForm();
+
+const params = new URLSearchParams(window.location.search);
+
+//Si erreur doublon de mail alors on affiche texte
+if (params.get("error") === "email_exists") {
+    emailError.textContent = "Cet email est déjà utilisé";
+}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

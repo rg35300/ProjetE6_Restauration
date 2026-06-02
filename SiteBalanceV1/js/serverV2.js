@@ -17,6 +17,9 @@ import { AddIpBan, CheckIpBan } from './Fonction.js';
 import path from 'path'; // ajout pour les chemins
 import { fileURLToPath } from 'url'; // ajout pour ES modules
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const __dirname = fileURLToPath(new URL('.', import.meta.url)); // remplacement de __dirname en ES modules
 serveur.use('/img', express.static(path.join(__dirname, '../img')));//Permet d'aller importer les images
 
@@ -114,7 +117,7 @@ serveur.use(session({
         secure: true,
         httpOnly: true,
         maxAge: 3600 * 1000,
-        sameSite: "strict"
+        sameSite: "lax"
     }
 }));
 

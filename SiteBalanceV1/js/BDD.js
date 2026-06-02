@@ -2,7 +2,34 @@ import express from 'express';
 const router = express.Router();
 import json2csv from 'json2csv';
 import logger from './logger.js';
-import { DroitAcces, isAuthenticated } from './routes.js';
+import { NewUtilisateur } from './Fonction.js';
+
+function isAuthenticated(req, res, next) {
+    if (req.session.logged) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+}
+
+function DroitAcces(rolesAutorises) {
+    return (req, res, next) => {
+        if (!req.session.user) {
+            return res.redirect('/');
+        }
+        const userRole = req.session.user.role;
+        if (rolesAutorises.includes(userRole)) {
+            next();
+        } else {
+            res.status(403).send(`
+            <script>
+                alert("Vous n'avez pas les droits pour accéder à cette page !");
+                window.history.back();
+            </script>
+        `);
+    };
+    }
+}
 
 router.post('/AddDataDonneeCollecte', isAuthenticated, async (req, res)=>{
     const { weight, choice ,balance}=req.body;
@@ -43,20 +70,21 @@ router.post('/ReadDataBase', isAuthenticated, async (req, res)=>{
     }
 });
 
-router.post('/AddUtilisateur', isAuthenticated, async (req, res)=>{
-    const { Nom,Prenom,Email,Role,MotDePasse}=req.body;
+router.post("/NewUtilisateurBDD", async (req, res) => {
+    const { Nom, Prenom, Email, MotDePasse,Role} = req.body;
     const pool = req.app.locals.pool;
-    try{
-        let connection;
-        connection = await pool.getConnection();
-        await connection.query(
-            `INSERT INTO Utilisateur (Nom, Prenom, Email, Role, MotDePasse)
-             VALUES (?, ?, ?, ?, ?)`,
-            [Nom,Prenom,Email,Role,MotDePasse]);
-        res.redirect('/BDD');
-    }
-    catch(err){
-        res.status(500).send("Erreur lors de l'affichage de la BDD");
+
+    try {
+        const result = await NewUtilisateur(Nom,Prenom,Email,MotDePasse,Role);
+        if (result?.error === "EMAIL_EXISTS") {
+            return res.redirect("/Register?error=email_exists");
+        }
+
+        return res.redirect("/BDD");
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send("Erreur serveur");
     }
 });
 
