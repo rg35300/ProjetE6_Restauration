@@ -55,6 +55,33 @@ router.post('/Login', async (req, res) => {
             registerFailedAttempt(ip, now);
             return res.status(401).send("Email ou mot de passe incorrect");
         }
+
+        // Vérification Turnstile
+        const token = req.body["cf-turnstile-response"];
+
+        if (!token) {
+            return res.status(400).send("Captcha manquant");
+        }
+
+        const verifyResponse = await fetch(
+            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    secret: process.env.TURNSTILE_SECRET_KEY,
+                    response: token
+                })
+            }
+        );
+
+        const verifyData = await verifyResponse.json();
+        //console.log("Turnstile response:", verifyData);
+        if (!verifyData.success) {
+            return res.status(400).send("Captcha invalide");
+        }
         
         const user = users[0];
         //Vérification du mot de passe hashé
@@ -138,6 +165,7 @@ router.post("/NewUtilisateur", async (req, res) => {
         );
 
         const verifyData = await verifyResponse.json();
+        //console.log("Turnstile response:", verifyData);
 
         if (!verifyData.success) {
             return res.status(400).send("Captcha invalide");
